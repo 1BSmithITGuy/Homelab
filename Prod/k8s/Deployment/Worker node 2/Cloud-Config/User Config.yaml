@@ -1,0 +1,5 @@
+#cloud-config
+hostname: bsus103k-8w02
+fqdn: bsus103k-8w02.ad.infutable.com
+manage_etc_hosts: true
+ssh_pwauth: true

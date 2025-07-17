@@ -1,0 +1,7 @@
+#  note:  I did not use the template or this yaml, installed from iso
+
+#cloud-config
+hostname: ubuntudev
+fqdn: ubuntudev.ad.infutable.com
+manage_etc_hosts: true
+ssh_pwauth: true

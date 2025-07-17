@@ -1,0 +1,35 @@
+========== SHUTDOWN SCRIPT START ==========
+Initiating shutdown of bsus103k-8w02...
+Failed to shutdown bsus103k-8w02:
+âœ– JsonRpcError: method not found: vm.shutdown
+    at Peer._callee$ (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\json-rpc-peer\dist\index.js:139:44)
+    at Peer.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:52:18)
+    at Generator.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regenerator.js:52:51)
+    at Generator.next (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regeneratorDefine.js:17:23)
+    at asyncGeneratorStep (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+    at _next (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+    at C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:22:7
+    at new Promise (<anonymous>)
+    at Peer.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:14:12)
+    at Peer.exec (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\json-rpc-peer\dist\index.js:182:20) {
+  code: -32601,
+  data: 'vm.shutdown'
+}
+
+Initiating shutdown of bsus103k-8w01...
+Failed to shutdown bsus103k-8w01:
+âœ– JsonRpcError: method not found: vm.shutdown
+    at Peer._callee$ (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\json-rpc-peer\dist\index.js:139:44)
+    at Peer.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:52:18)
+    at Generator.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regenerator.js:52:51)
+    at Generator.next (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\regeneratorDefine.js:17:23)
+    at asyncGeneratorStep (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+    at _next (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+    at C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:22:7
+    at new Promise (<anonymous>)
+    at Peer.<anonymous> (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\@babel\runtime\helpers\asyncToGenerator.js:14:12)
+    at Peer.exec (C:\Users\bryan\AppData\Roaming\npm\node_modules\xo-cli\node_modules\json-rpc-peer\dist\index.js:182:20) {
+  code: -32601,
+  data: 'vm.shutdown'
+}
+

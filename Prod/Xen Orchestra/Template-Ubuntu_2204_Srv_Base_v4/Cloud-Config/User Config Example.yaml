@@ -1,0 +1,18 @@
+#  Bryan Smith
+#  06/30/2025
+#  -----------------------------------------------------------------------------------------------------------------------------------------
+#  For use with the template "Template-Ubuntu_2204_Srv_Base_v4"
+#  paste everything starting with #cloud-config in the "User config" field when creating a template; do not paste the comments above or below it.
+#  See readme for more details
+#  -----------------------------------------------------------------------------------------------------------------------------------------
+
+#cloud-config
+hostname: v4final
+fqdn: v4final.testing.com
+manage_etc_hosts: true
+ssh_pwauth: true
+
+#  other options:
+user: testing
+password: testing
+chpasswd: {expire: False}

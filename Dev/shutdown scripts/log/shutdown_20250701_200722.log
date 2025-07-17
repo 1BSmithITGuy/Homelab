@@ -1,0 +1,48 @@
+========== SHUTDOWN SCRIPT START ==========
+
+[START] Shutting down bsus103k-8w02...
+[ERROR] Failed to shutdown bsus103k-8w02
+404 Not Found
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /rest/v0/vms/d35e8d1e-f151-98ea-fcad-56324fe7bebe/actions/acpiShutdown</pre>
+</body>
+</html>
+
+
+[START] Shutting down bsus103k-8w01...
+[ERROR] Failed to shutdown bsus103k-8w01
+404 Not Found
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /rest/v0/vms/e967306b-6cc2-c7e3-4ffe-876d29fcf26e/actions/acpiShutdown</pre>
+</body>
+</html>
+
+
+[START] Shutting down bsus103k-8m01...
+[ERROR] Failed to shutdown bsus103k-8m01
+404 Not Found
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /rest/v0/vms/b78ba2a5-ac4f-2db1-b8d6-0fc46c1a3c8a/actions/acpiShutdown</pre>
+</body>
+</html>
+
+
+[INTERRUPT] Script aborted by user

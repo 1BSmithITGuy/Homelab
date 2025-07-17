@@ -1,0 +1,22 @@
+#  Bryan Smith
+#  06/30/2025
+#  -----------------------------------------------------------------------------------------------------------------------------------------
+#  For use with the template "Template-Ubuntu_2204_Srv_Base_v4"
+#  paste everything starting with #cloud-config in the "network config" field when creating a template; do not paste the cmments above it.
+#  See readme for more details
+#  -----------------------------------------------------------------------------------------------------------------------------------------
+
+#cloud-config
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: false
+      addresses:
+        - 10.0.2.6/27
+      gateway4: 10.0.2.1
+      nameservers:
+        search: [ad.infutable.com]
+        addresses:
+          - 10.0.2.1
+          - 1.1.1.1

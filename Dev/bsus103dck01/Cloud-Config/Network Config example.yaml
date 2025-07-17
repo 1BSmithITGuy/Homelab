@@ -1,0 +1,16 @@
+#  note:  I did not use the template or this yaml, installed from iso
+
+#cloud-config
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: false
+      addresses:
+        - 10.0.2.10/27
+      gateway4: 10.0.2.1
+      nameservers:
+        search: [ad.infutable.com]
+        addresses:
+          - 10.0.2.1
+          - 1.1.1.1
