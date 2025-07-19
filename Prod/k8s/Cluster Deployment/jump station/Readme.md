@@ -4,3 +4,5 @@
 #  setup xo-cli so I could execute scripts on Xen Orchestra
 sudo apt install -y nodejs npm
 sudo npm install -g xo-cli
+xo-cli --url https://your-xo-server --token your-token vm.list
+
