@@ -17,3 +17,13 @@ nano ~/.config/xo-cli/config.json
 #  "token": "paste new token here"
 # }
 # -------------------------------------------------------------------
+
+#----------------------------------------------
+#  this is to run scripts off the jump station onto k8s nodes
+#  ssh-keygen -t ed25519 -C "k8s-automation"
+#       # accept defaults on all prompts
+#  
+# ssh-copy-id your-username@<node-ip>
+#     #  use the username to login to the node
+#     #  do this for each node/master
+#----------------------------------------------

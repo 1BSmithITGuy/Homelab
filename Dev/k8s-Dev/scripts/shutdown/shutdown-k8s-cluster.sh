@@ -1,4 +1,13 @@
 #!/bin/bash
+#  Prerequisites:  this assumes you have run the following on the jump station:
+#----------------------------------------------
+#  ssh-keygen -t ed25519 -C "k8s-automation"
+#       # accept defaults on all prompts
+#  
+# ssh-copy-id your-username@<node-ip>
+#     #  use the username to login to the node
+#     #  do this for each node/master
+#----------------------------------------------
 
 # === Configuration ===
 SSH_USER="your-username"  # Change this to your actual user on the nodes
