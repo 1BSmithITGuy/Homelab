@@ -14,7 +14,7 @@
 #      #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
 
 # === Configuration ===
-SSH_USER="bssadm"  # Change this to your actual username on the nodes
+SSH_USER="bssadm"
 BASE_DIR="/bss-scripts/k8s/shutdown-k8s-cluster"
 WORK_DIR="$BASE_DIR/workingdir"
 LOG_DIR="$BASE_DIR/logs"
@@ -52,7 +52,11 @@ cat "$CORDON_LIST"
 echo "🔒 Cordoning all worker nodes..."
 while IFS=' ' read -r node_name node_ip; do
   echo "  - Cordoning $node_name ($node_ip)"
-  kubectl cordon "$node_name" || echo "⚠️ Failed to cordon $node_name"
+  if kubectl cordon "$node_name" 2>/dev/null; then
+    echo "    ✅ Cordoned $node_name"
+  else
+    echo "    ⚠️ Already cordoned or failed to cordon $node_name"
+  fi
 done < "$CORDON_LIST"
 
 sleep 3
@@ -60,14 +64,36 @@ sleep 3
 # === Shutdown Master ===
 read -r MASTER_NAME MASTER_IP < "$MASTER_FILE"
 echo "📦 Shutting down master node: $MASTER_NAME ($MASTER_IP)"
-ssh "$SSH_USER@$MASTER_IP" "$WORKER_SHUTDOWN_CMD" || echo "⚠️ Failed to shut down master $MASTER_NAME"
+ssh "$SSH_USER@$MASTER_IP" "$WORKER_SHUTDOWN_CMD" &
+MASTER_PID=$!
 
 # === Shutdown Workers ===
+declare -A WORKER_STATUS
+
 echo "🛑 Shutting down worker nodes..."
 while IFS=' ' read -r node_name node_ip; do
   echo "  - Shutting down $node_name ($node_ip)"
-  ssh "$SSH_USER@$node_ip" "$WORKER_SHUTDOWN_CMD" || echo "⚠️ Failed to shut down worker $node_name"
+  ssh "$SSH_USER@$node_ip" "$WORKER_SHUTDOWN_CMD" &
+  WORKER_STATUS[$node_name]=$!
 done < "$CORDON_LIST"
+
+wait $MASTER_PID
+MASTER_RESULT=$?
+if [[ $MASTER_RESULT -eq 255 ]]; then
+  echo "    ✅ Master node shutdown likely succeeded (SSH closed connection)"
+else
+  echo "    ⚠️ Master node may not have shut down cleanly (exit code: $MASTER_RESULT)"
+fi
+
+for node in "${!WORKER_STATUS[@]}"; do
+  wait ${WORKER_STATUS[$node]}
+  RC=$?
+  if [[ $RC -eq 255 ]]; then
+    echo "    ✅ Worker $node shutdown likely succeeded (SSH closed connection)"
+  else
+    echo "    ⚠️ Worker $node may not have shut down cleanly (exit code: $RC)"
+  fi
+done
 
 echo "✅ Cluster shutdown process completed."
 echo "📝 Log file saved to $LOG_FILE"
