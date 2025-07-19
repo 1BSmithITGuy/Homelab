@@ -1,17 +1,20 @@
 #!/bin/bash
-#  Prerequisites:  this assumes you have run the following on the jump station:
+#  This script will shutdown the k8s cluster as cleanly as possible
+#  It will shutdown the cluster that is in the current kubectl context, and runs on Ubuntu
+
+# -------------------------------------------------------------------------------
+#  Prerequisites:
 #----------------------------------------------
 #  ssh-keygen -t ed25519 -C "k8s-automation"
 #       # accept defaults on all prompts
 #  
 # ssh-copy-id your-username@<node-ip>
+#  sudo visudo
+#     #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
 #     #  use the username to login to the node
 #     #  do this for each node/master
-#  
 #----------------------------------------------
-#  on each node/master:  
-#  sudo visudo
-#      #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
+# -------------------------------------------------------------------------------
 
 # === Configuration ===
 SSH_USER="bssadm"
