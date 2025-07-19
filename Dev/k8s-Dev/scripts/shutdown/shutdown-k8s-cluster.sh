@@ -79,8 +79,8 @@ done < "$CORDON_LIST"
 
 wait $MASTER_PID
 MASTER_RESULT=$?
-if [[ $MASTER_RESULT -eq 255 ]]; then
-  echo "    ✅ Master node shutdown likely succeeded (SSH closed connection)"
+if [[ $MASTER_RESULT -eq 255 || $MASTER_RESULT -eq 0 ]]; then
+  echo "    ✅ Master node shutdown likely succeeded"
 else
   echo "    ⚠️ Master node may not have shut down cleanly (exit code: $MASTER_RESULT)"
 fi
