@@ -134,3 +134,7 @@ sudo sysctl -p
 bsus103k-8m01     Ready    control-plane   15m   v1.33.2
 worker-node-01    Ready    <none>          2m    v1.33.2
 worker-node-02    Ready    <none>          2m    v1.33.2
+
+#  for k8s shutdown script from a jump station, on each node/master:  
+  sudo visudo
+  # add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown

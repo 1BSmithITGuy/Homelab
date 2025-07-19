@@ -7,10 +7,14 @@
 # ssh-copy-id your-username@<node-ip>
 #     #  use the username to login to the node
 #     #  do this for each node/master
+#  
 #----------------------------------------------
+#  on each node/master:  
+#  sudo visudo
+#      #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
 
 # === Configuration ===
-SSH_USER="your-username"  # Change this to your actual user on the nodes
+SSH_USER="bssadm"  # Change this to your actual username on the nodes
 BASE_DIR="/bss-scripts/k8s/shutdown-k8s-cluster"
 WORK_DIR="$BASE_DIR/workingdir"
 LOG_DIR="$BASE_DIR/logs"
@@ -18,7 +22,7 @@ CORDON_LIST="$WORK_DIR/worker-nodes.txt"
 MASTER_FILE="$WORK_DIR/master-node.txt"
 TIMESTAMP=$(date '+%Y-%m-%d_%H-%M-%S')
 LOG_FILE="$LOG_DIR/shutdown-log-$TIMESTAMP.log"
-WORKER_SHUTDOWN_CMD="sudo shutdown now"
+WORKER_SHUTDOWN_CMD="sudo /sbin/shutdown now"
 
 # === Ensure Directories Exist ===
 for dir in "$BASE_DIR" "$WORK_DIR" "$LOG_DIR"; do
@@ -36,8 +40,8 @@ echo "🔧 Kubernetes cluster shutdown started at $TIMESTAMP"
 echo "🔍 Detecting all nodes and their IP addresses..."
 
 # === Get Master and Worker Node IPs ===
-kubectl get nodes -o wide | grep -E "control-plane|master" | awk '{print $1,$6}' > "$MASTER_FILE"
-kubectl get nodes -o wide | grep -vE "control-plane|master" | awk '{print $1,$6}' > "$CORDON_LIST"
+kubectl get nodes -l node-role.kubernetes.io/control-plane -o wide --no-headers | awk '{print $1,$6}' > "$MASTER_FILE"
+kubectl get nodes -l '!node-role.kubernetes.io/control-plane' -o wide --no-headers | awk '{print $1,$6}' > "$CORDON_LIST"
 
 echo "📄 Master node:"
 cat "$MASTER_FILE"
@@ -56,7 +60,7 @@ sleep 3
 # === Shutdown Master ===
 read -r MASTER_NAME MASTER_IP < "$MASTER_FILE"
 echo "📦 Shutting down master node: $MASTER_NAME ($MASTER_IP)"
-ssh "$SSH_USER@$MASTER_IP" "sudo shutdown now" || echo "⚠️ Failed to shut down master $MASTER_NAME"
+ssh "$SSH_USER@$MASTER_IP" "$WORKER_SHUTDOWN_CMD" || echo "⚠️ Failed to shut down master $MASTER_NAME"
 
 # === Shutdown Workers ===
 echo "🛑 Shutting down worker nodes..."
