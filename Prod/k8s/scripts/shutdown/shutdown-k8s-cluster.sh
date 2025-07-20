@@ -1,20 +1,34 @@
 #!/bin/bash
-#  This script will shutdown the k8s cluster as cleanly as possible
-#  It will shutdown the cluster that is in the current kubectl context, and runs on Ubuntu
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  07/19/2025
 
-# -------------------------------------------------------------------------------
-#  Prerequisites:
-#----------------------------------------------
-#  ssh-keygen -t ed25519 -C "k8s-automation"
-#       # accept defaults on all prompts
-#  
-# ssh-copy-id your-username@<node-ip>
-#  sudo visudo
-#     #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
-#     #  use the username to login to the node
-#     #  do this for each node/master
-#----------------------------------------------
-# -------------------------------------------------------------------------------
+# DESCRIPTION:
+  # This script is intended to shutdown the entire k8s cluster as cleanly as possible.
+  # It will cordon the worker nodes and shut down the entire k8s cluster.
+  # The nodes will be uncordoned if started up with the startup-k8s-cluster companion script.
+          #  This script saves the current running nodes it cordoned/shutdown in a text file (CORDON_LIST)
+          #  The nodes are cordoned at shutdown to avoid the master starting pods on the first node that it sees on startup.
+  #  There are log filesand work files located in /bss-scripts (see LOG_FILE)
+
+#  PREREQUISITES
+  # This script is intended to be run on an Ubuntu jump station that also runs startup-k8s-cluster.sh
+  # kubectl config context on the jump station needs to be set to the correct cluster
+  
+  #  Run the following:
+      #  On the Jump station:
+          #  ssh-keygen -t ed25519 -C "k8s-automation"
+              # accept defaults on all prompts
+
+          # ssh-copy-id your-username@<node-ip>
+
+      #  On each worker/master node:
+        #  sudo visudo
+            #  add to bottom of file: bssadm ALL=(ALL) NOPASSWD: /sbin/shutdown
+#----------------------------------------------------------------------------------------------------------------
+
+
 
 # === Configuration ===
 SSH_USER="bssadm"
