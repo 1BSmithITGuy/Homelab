@@ -18,12 +18,19 @@ nano ~/.config/xo-cli/config.json
 # }
 # -------------------------------------------------------------------
 
-#----------------------------------------------
+# ----------------------------------------------
 #  this is to run scripts off the jump station onto k8s nodes
-#  ssh-keygen -t ed25519 -C "k8s-automation"
-#       # accept defaults on all prompts
-#  
-# ssh-copy-id your-username@<node-ip>
+ ssh-keygen -t ed25519 -C "k8s-automation"
+#      #  accept defaults on all prompts
+  
+ssh-copy-id your-username@<node-ip>
 #     #  use the username to login to the node
 #     #  do this for each node/master
-#----------------------------------------------
+# ----------------------------------------------
+
+# ----------------------------------------------
+#  this is to run scripts directly into the xcp-ng hosts, xo-cli doesn't work for shutdown of a VM
+ssh-copy-id root@10.0.0.51
+ssh-copy-id root@10.0.0.52
+ssh-copy-id root@10.0.0.53
+# ----------------------------------------------
