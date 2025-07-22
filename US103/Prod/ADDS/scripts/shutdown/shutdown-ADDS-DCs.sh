@@ -1,4 +1,17 @@
 #!/bin/bash
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  07/21/2025
+
+#  DESCRIPTION:
+    #   Shuts down AD Domain Controllers by VM name (static - "INFUS103DC01" "INFUS103DC02")
+    #   xo-cli is used to dynamically find all hosts assigned to Xen Orchestra, and then SSH is used to shutdown the VMs. 
+
+#  PREREQUISITES
+    #   This script is intended to be run on an Ubuntu jump station that has xo-cli and SSH keys to the XCP-NG hosts setup
+        #   See jump station readme.md for instructions
+#----------------------------------------------------------------------------------------------------------------
 
 BASE_DIR="/bss-scripts/k8s/shutdown-ADDS-DCs"
 LOG_DIR="$BASE_DIR/logs"

@@ -3,11 +3,14 @@
 #  Bryan Smith
 #  BSmithITGuy@gmail.com
 #  Last Update:  07/21/2025
-#
+
 #  DESCRIPTION:
-#    Starts AD Domain Controllers in order using xo-cli.
-#    Waits for INFUS103DC01 (10.0.1.2) to be pingable before starting INFUS103DC02 (10.0.1.3).
-#    Skips INFUS103TS01.
+    #    Starts AD Domain Controllers in order using xo-cli.
+    #    Waits for INFUS103DC01 (10.0.1.2) to be pingable before starting INFUS103DC02 (10.0.1.3).
+
+#  PREREQUISITES
+    #   This script is intended to be run on an Ubuntu jump station that has xo-cli setup
+        #   See jump station readme.md for instructions
 #----------------------------------------------------------------------------------------------------------------
 
 # === Configuration ===
