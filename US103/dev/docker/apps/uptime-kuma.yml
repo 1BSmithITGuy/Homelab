@@ -1,0 +1,18 @@
+#  docker compose -f uptime-kuma.yml up -d
+#  docker compose -f uptime-kuma.yml down
+
+version: '3'
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    container_name: uptime-kuma
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+      #  added to monitor portainer:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    restart: always
+
+volumes:
+  uptime-kuma-data:
