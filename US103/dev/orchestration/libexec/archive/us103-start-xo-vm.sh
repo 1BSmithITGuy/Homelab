@@ -1,16 +1,16 @@
-#!/bin/bash
 #----------------------------------------------------------------------------------------------------------------
 #  Bryan Smith
 #  BSmithITGuy@gmail.com
-#  Last Update:  07/25/2025
-#
+#  Last Update:  07/23/2025
+
 #  DESCRIPTION:
-#    Shared helper script to start one or more VMs using xo-cli.
-#    Usage: ./us103-start-xo-vm VM_NAME [VM_NAME ...]
-#
-#  PREREQUISITES:
-#    - Run on Ubuntu jump station with xo-cli installed
-#    - SSH access and xo-cli login configured
+    #  Shared helper script to start one or more VMs using xo-cli.
+    #  Usage: ./us103-start-xo-vm VM_NAME [VM_NAME ...]
+
+#  PREREQUISITES
+    #   This script is intended to be run on an Ubuntu jump station that has xo-cli and SSH keys to the XCP-NG hosts setup
+      #   See jump station readme.md for instructions
+
 #----------------------------------------------------------------------------------------------------------------
 
 set -euo pipefail
@@ -25,23 +25,18 @@ fi
 
 echo "📦 Starting VMs using xo-cli..."
 
-# Fetch all VM objects once
+# Fetch list of all VMs once
 VM_LIST=$($XO_CLI list-objects type=VM)
 
+# Loop through input VM names
 for VM_NAME in "$@"; do
-    echo "➡️  Starting VM: $VM_NAME"
-
-    # Perform case-insensitive match
-    UUID=$(echo "$VM_LIST" | jq -r --arg name_lc "$(echo "$VM_NAME" | tr '[:upper:]' '[:lower:]')" \
-        '.[] | select(.name_label and (.name_label | ascii_downcase) == $name_lc) | .id')
-
-    if [[ -n "$UUID" ]]; then
+    UUID=$(echo "$VM_LIST" | jq -r ".[] | select(.name_label==\"$VM_NAME\") | .id")
+    if [ -n "$UUID" ]; then
         echo "🚀 Starting $VM_NAME (UUID: $UUID)..."
         $XO_CLI rest post vms/"$UUID"/actions/start
     else
-        echo "⚠️  VM '$VM_NAME' not found (case-insensitive match)"
+        echo "⚠️ VM '$VM_NAME' not found in xo-cli output."
     fi
 done
 
 echo "✅ VM startup complete."
-

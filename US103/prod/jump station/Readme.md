@@ -34,3 +34,5 @@ ssh-copy-id root@10.0.0.51
 ssh-copy-id root@10.0.0.52
 ssh-copy-id root@10.0.0.53
 # ----------------------------------------------
+
+#  had to install tools from iso to get IP reporting

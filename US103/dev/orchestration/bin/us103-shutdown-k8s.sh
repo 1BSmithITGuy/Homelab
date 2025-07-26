@@ -1,57 +1,69 @@
 #!/bin/bash
+# us103-shutdown-k8s.sh - Gracefully cordon and shut down all K8s VMs at site US103
 #
-# Shuts down the Kubernetes cluster for US103.
+# Phase 1: Cordon each node using kubectl (run locally from the jump station)
+# Phase 2: Shutdown each VM over SSH (using hostname or fallback IP lookup)
 #
-# Loads:
-#   - /orchestration/vars/global/US103-k8s-servers.vars
-#   - Optional: /orchestration/vars/optional/us103-shutdown-k8s.sh.vars
-#
-# Attempts to SSH into each node. If it's a K8s node, cordon and drain. If it's Linux, shut down via SSH.
-# If SSH fails, fall back to Xen Orchestra VM shutdown.
+# VM names come from:
+#   /orchestration/vars/global/US103-k8s-servers.vars
+# Optional overrides:
+#   /orchestration/vars/optional/us103-shutdown-k8s.vars
 
 set -euo pipefail
 
-SCRIPT_NAME=$(basename "$0")
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(realpath "$SCRIPT_DIR/..")"
+SCRIPT_NAME=$(basename "$0" .sh)
+VARS_FILE="/orchestration/vars/global/US103-k8s-servers.vars"
+OPTIONAL_VARS="/orchestration/vars/optional/${SCRIPT_NAME}.vars"
+GET_IP_SCRIPT="$(dirname "$0")/us103-get-xo-vm-ip.sh"
 
-GLOBAL_VARS="$REPO_ROOT/vars/global/US103-k8s-servers.vars"
-OPTIONAL_VARS="$REPO_ROOT/vars/optional/${SCRIPT_NAME}.vars"
-SHUTDOWN_VM_SCRIPT="$REPO_ROOT/libexec/us103-shutdown-xo-vm.sh"
-
-declare -A K8S_MAP
-
-echo "[$SCRIPT_NAME] Loading global vars: $GLOBAL_VARS"
-while IFS='=' read -r vm ip; do
-    [[ -z "$vm" || "$vm" =~ ^# ]] && continue
-    K8S_MAP["$vm"]="$ip"
-done < "$GLOBAL_VARS"
-
-if [[ -f "$OPTIONAL_VARS" ]]; then
-    echo "[$SCRIPT_NAME] Loading optional vars: $OPTIONAL_VARS"
-    # shellcheck source=/dev/null
-    source "$OPTIONAL_VARS"
+# Ensure vars file is present
+if [[ ! -f "$VARS_FILE" ]]; then
+    echo "❌ Missing required vars file: $VARS_FILE"
+    exit 1
 fi
+source "$VARS_FILE"
 
-for vm in "${!K8S_MAP[@]}"; do
-    ip="${K8S_MAP[$vm]}"
-    echo "[$SCRIPT_NAME] Processing $vm at $ip"
+# Load optional overrides
+[[ -f "$OPTIONAL_VARS" ]] && source "$OPTIONAL_VARS"
 
-    if timeout 5s ssh -o BatchMode=yes -o ConnectTimeout=5 "$ip" "true" 2>/dev/null; then
-        echo "  → SSH reachable: $ip"
-
-        if ssh "$ip" "command -v kubectl >/dev/null"; then
-            echo "  → Node is Kubernetes. Cordon and drain..."
-            ssh "$ip" "
-                kubectl cordon \$(hostname) &&                 kubectl drain \$(hostname) --ignore-daemonsets --delete-emptydir-data --force
-                sudo shutdown -h now
-            " || echo "  ⚠️ Failed to cordon/drain $vm"
-        else
-            echo "  → Non-K8s Linux. Shutting down via SSH."
-            ssh "$ip" "sudo shutdown -h now"
+# --- Function: Cordon a node across all available kube contexts ---
+cordon_node() {
+    local nodename="$1"
+    local found=0
+    for ctx in $(kubectl config get-contexts -o name); do
+        if kubectl --context="$ctx" get node "$nodename" &>/dev/null; then
+            echo "🔒 Cordon: $nodename (context: $ctx)"
+            kubectl --context="$ctx" cordon "$nodename"
+            found=1
         fi
-    else
-        echo "  ⚠️ $vm ($ip) unreachable via SSH — falling back to XO shutdown"
-        "$SHUTDOWN_VM_SCRIPT" "$vm"
-    fi
+    done
+    [[ "$found" -eq 0 ]] && echo "⚠️  Node $nodename not found in any context"
+}
+
+# --- Phase 1: Cordon all nodes first ---
+echo "📌 Cordoning all Kubernetes nodes first..."
+for vm in "${K8S_VMS[@]}"; do
+    cordon_node "$vm"
 done
+
+# --- Phase 2: Shutdown each VM ---
+echo "🔻 Shutting down all VMs..."
+for vm in "${K8S_VMS[@]}"; do
+    echo "➡️  Processing $vm..."
+
+    # Try SSH via hostname
+    if ssh -o ConnectTimeout=5 -o BatchMode=yes "$vm" "true" 2>/dev/null; then
+        TARGET="$vm"
+    else
+        echo "🔎 Host $vm not reachable by name, trying IP lookup..."
+        TARGET=$("$GET_IP_SCRIPT" "$vm")
+        if [[ -z "$TARGET" ]]; then
+            echo "❌ Could not resolve IP for $vm, skipping shutdown."
+            continue
+        fi
+    fi
+
+    echo "⏻ Sending shutdown command to $vm ($TARGET)..."
+    ssh "$TARGET" "sudo shutdown -h now" || echo "⚠️  Shutdown failed for $vm"
+done
+
