@@ -25,14 +25,10 @@
 
         **Hostname:**  
         `bsus103jump01`
-
+        
+        **Username:**
+        'bryan'
         ---
-
-        ## 🔑 SSH Setup
-
-        - SSH key generated via:  
-        ```bash
-        ssh-keygen -t ed25519 -C "jump station key"
 
 ## 🖥️ Post Installation
 
@@ -134,13 +130,96 @@ nano ~/.config/xo-cli/config.json
 ssh-keygen -t ed25519 -C "k8s-automation"
 #       accepted default values
 #  for automation, need to automate asking for a password with anything ssh-copy-id below:
+ssh-copy-id bssadm@10.0.2.20
 ssh-copy-id bssadm@10.0.2.21
 ssh-copy-id bssadm@10.0.2.22
-ssh-copy-id bssadm@10.0.2.23
 
 ssh-copy-id root@10.0.0.51
 ssh-copy-id root@10.0.0.52
 #  this host is off, will run this when needed later, for scripting just report and keep going:
 ssh-copy-id root@10.0.0.53
+
+# ArgoCD CLI
+ARGO_VERSION=$(curl -s https://api.github.com/repos/argoproj/argo-cd/releases/latest | grep tag_name | cut -d '"' -f 4)
+curl -sSL -o argocd "https://github.com/argoproj/argo-cd/releases/download/${ARGO_VERSION}/argocd-linux-amd64"
+sudo install -m 555 argocd /usr/local/bin/argocd
+rm argocd
+
+sudo apt install tree
+
+#  I manually copied the /etc/kubernetes/admin.conf file from the master to ~/.kube/config on the jump station.  On the k3s server I copied /etc/rancher/k3s/k3s.yaml to config-k8sonly.bak. 
+
+# To merge the files I ran:
+KUBECONFIG=~/.kube/config:~/.kube/config-k3sonly.bak kubectl config view --flatten > ~/.kube/config.merged
+
+cp config.merged config
+
+export KUBECONFIG=~/.kube/config
+
+#  I manually edited the config file to make the clusters more descriptive.  below is the yaml minus the keys:
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: 
+    server: https://10.0.0.202:6443
+  name: us103-k3s01_cluster
+- cluster:
+    certificate-authority-data: 
+    server: https://10.0.2.20:6443
+  name: us103-kubeadm01_cluster
+contexts:
+- context:
+    cluster: us103-k3s01_cluster
+    user: us103k3s01-admin
+  name: us103-k3s01
+- context:
+    cluster: us103-kubeadm01_cluster
+    user: us103kubeadm01-admin
+  name: us103-kubeadm01
+current-context: us103-k3s01
+kind: Config
+preferences: {}
+users:
+- name: us103k3s01-admin
+  user:
+    client-certificate-data: 
+    client-key-data: 
+- name: us103kubeadm01-admin
+  user:
+    client-certificate-data: 
+    client-key-data: 
+
+# screensaver:
+gsettings set org.gnome.desktop.session idle-delay 600
+gsettings set org.gnome.desktop.screensaver lock-delay 0
+
+#  git repo setup
+sudo groupadd gitadmins
+sudo usermod -aG gitadmins bryan
+sudo mkdir -p /srv/repos
+sudo chown root:gitadmins /srv/repos
+sudo chmod 2770 /srv/repos
+
+#  cloned server here (before git repo setup/download) - clone can be turned into a template later (see template documentation, and notes on updates needed prior to template creation below)
+
+#  setup git repo:
+
+ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+#  paste this key into github under profile>>settings>>SSH and GPG keys (create an SSH key)
+
+git clone git@github.com:1BSmithITGuy/Homelab.git
+
+#  run from /srv/repos:
+git clone git@github.com:1BSmithITGuy/Homelab.git
+
+git config --global user.email "you@example.com"
+
+git config --global user.email "you@example.com"
+
+
+#  In the clone, before setting up a template, need to:
+1.  Add .bashrc files to /skel and /root
+
+
 
 Left off:  need to setup argocd cli, kubectl context, git repos, 
