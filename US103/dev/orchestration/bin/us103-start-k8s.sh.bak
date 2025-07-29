@@ -81,29 +81,25 @@ for i in {1..20}; do
   sleep 5
 done
 
-# Wait for nodes to become Ready or Ready,SchedulingDisabled
+# Wait for nodes to become Ready
 echo "⏳ Waiting for all nodes to be Ready..."
 for i in {1..20}; do
   all_ready=true
   for vm in "${nodes[@]}"; do
     status=$(kubectl get node "$vm" --no-headers 2>/dev/null | awk '{print $2}') || status=""
-    if [[ ! "$status" =~ ^Ready ]]; then
-      echo "  - $vm: ${status:-Unknown}"
+    if [[ "$status" != "Ready" ]]; then
+      echo "  - $vm: ${status:-Unknown}" 
       all_ready=false
     fi
   done
-  if [[ "$all_ready" == "true" ]]; then
-    echo "✅ All nodes Ready (or Ready,SchedulingDisabled)"
-    break
-  fi
+  $all_ready && { echo "✅ All nodes Ready"; break; }
   sleep 5
 done
 
 # Uncordon any cordoned nodes
 echo "🔓 Uncordoning nodes if needed..."
 for vm in "${nodes[@]}"; do
-  cordoned=$(kubectl get node "$vm" -o jsonpath='{.spec.unschedulable}' 2>/dev/null || echo "false")
-  if [[ "$cordoned" == "true" ]]; then
+  if [[ "$(kubectl get node "$vm" -o jsonpath='{.spec.unschedulable}')" == "true" ]]; then
     echo "🔓 Uncordoning $vm"
     kubectl uncordon "$vm"
   fi
