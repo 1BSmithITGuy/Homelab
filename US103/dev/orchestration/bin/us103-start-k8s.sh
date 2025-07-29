@@ -23,20 +23,20 @@ for file in "$GLOBAL_VARS" "$AD_VARS"; do
   fi
 done
 
-# Parse context
-context=$(grep -E '^context=' "$GLOBAL_VARS" | head -n1 | cut -d= -f2-)
+# Parse context (case-insensitive)
+context=$(grep -iE '^[[:space:]]*context=' "$GLOBAL_VARS" | head -n1 | cut -d= -f2-)
 if [[ -z "$context" ]]; then
   echo "❌ 'context=' not found in $GLOBAL_VARS" >&2
   exit 1
 fi
 
-# Parse nodes (comma-separated)
-nodes_line=$(grep -E '^nodes=' "$GLOBAL_VARS" | head -n1 | cut -d= -f2-)
+# Parse nodes (case-insensitive, comma-separated)
+nodes_line=$(grep -iE '^[[:space:]]*nodes=' "$GLOBAL_VARS" | head -n1 | cut -d= -f2-)
 if [[ -z "$nodes_line" ]]; then
   echo "❌ 'nodes=' not found in $GLOBAL_VARS" >&2
   exit 1
 fi
-IFS=',' read -r -a nodes <<< "$nodes_line"
+IFS=, read -r -a nodes <<< "$nodes_line"
 
 # Function: check DNS port 53
 dns_up() {
@@ -109,14 +109,15 @@ for vm in "${nodes[@]}"; do
   fi
 done
 
-# Start optional standalone VMs (other keys in optional file)
+# Start optional standalone VMs (one VM per line, ignore comments)
 if [[ -f "$OPTIONAL_VARS" ]]; then
   echo "📦 Starting optional VMs from $OPTIONAL_VARS"
-  while IFS='=' read -r key val; do
-    [[ "$key" =~ ^(context|nodes)$ || -z "$key" ]] && continue
-    echo "➡️ Starting optional VM: $key"
-    "$START_VM_SCRIPT" "$key"
-  done < "$OPTIONAL_VARS"
+  # Read non-comment, non-empty lines
+  mapfile -t optional_vms < <(grep -vE '^[[:space:]]*#' "$OPTIONAL_VARS" | sed '/^[[:space:]]*$/d')
+  for vm in "${optional_vms[@]}"; do
+    echo "➡️ Starting optional VM: $vm"
+    "$START_VM_SCRIPT" "$vm"
+  done
 fi
 
 echo "✅ All done."
