@@ -77,6 +77,10 @@ alias kgp='kubectl get pods'
 alias kc='kubectx'
 alias kn='kubens'
 
+#  git filesystem navigation shortcut aliases (BSS)
+alias bsdev='cd /srv/repos/Homelab/US103/dev/'
+alias bsprod='cd /srv/repos/Homelab/US103/prod/'
+alias bsdevorc='cd /srv/repos/Homelab/US103/dev/orchestration'
 
 # Bash completion
 if ! shopt -oq posix; then
