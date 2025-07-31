@@ -1,26 +1,75 @@
 #!/bin/bash
-#
-# Gracefully shut down one or more VMs using xo-cli.
-# Usage:
-#   us103-shutdown-xo-vm.sh <vm_name1> [<vm_name2> ...]
-#
-# Each VM will be shut down using ACPI; errors are reported but do not stop the script.
 
-set -euo pipefail
+# us103-shutdown-xo-vm.sh VM_NAME1 [VM_NAME2 ...]
+# Gracefully shuts down exact-matching VMs (case-insensitive) across multiple XCP-ng hosts
 
-SCRIPT_NAME=$(basename "$0")
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SSH_USER="root"
+XCPNG_HOSTS=("10.0.0.52" "10.0.0.51")  # Primary first, fallback second
 
-if [[ "$#" -eq 0 ]]; then
-    echo "Usage: $SCRIPT_NAME <vm_name1> [<vm_name2> ...]"
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 VM_NAME1 [VM_NAME2 ...]" >&2
     exit 1
 fi
 
-for vm_name in "$@"; do
-    echo "[$SCRIPT_NAME] Attempting ACPI shutdown for VM: $vm_name"
-    if xo-cli vm.shutdown name-label="$vm_name"; then
-        echo "  → Successfully issued shutdown for $vm_name"
-    else
-        echo "  ⚠️ Failed to shut down $vm_name via xo-cli"
+# Function to build VM name => UUID map from a given host
+get_vm_map_from_host() {
+    local host="$1"
+    local raw
+    declare -A map
+    raw=$(ssh -o BatchMode=yes "${SSH_USER}@${host}" xe vm-list power-state=running 2>/dev/null) || return 1
+
+    local uuid="" name=""
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^uuid ]]; then
+            uuid=$(echo "$line" | awk -F: '{print $2}' | xargs)
+            name=""
+        elif [[ "$line" =~ name-label ]]; then
+            name=$(echo "$line" | awk -F: '{print $2}' | xargs)
+        fi
+
+        if [[ -n "$uuid" && -n "$name" ]]; then
+            if [[ "$name" =~ [Cc]ontrol\ domain ]]; then
+                uuid=""
+                name=""
+                continue
+            fi
+            key=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+            map["$key"]="$uuid|$name"
+            uuid=""
+            name=""
+        fi
+    done <<< "$raw"
+
+    for key in "${!map[@]}"; do
+        echo "$key|${map[$key]}"
+    done
+}
+
+# Loop through each input VM
+for VM_INPUT in "$@"; do
+    found=0
+    vm_key=$(echo "$VM_INPUT" | tr '[:upper:]' '[:lower:]')
+
+    for host in "${XCPNG_HOSTS[@]}"; do
+        while IFS="|" read -r key value; do
+            [[ -z "$key" || -z "$value" ]] && continue
+            if [[ "$key" == "$vm_key" ]]; then
+                uuid="${value%%|*}"
+                name="${value#*|}"
+                echo "Shutting down VM '$name' (UUID: $uuid) on host $host..."
+                if ssh -o BatchMode=yes "${SSH_USER}@${host}" xe vm-shutdown uuid="$uuid"; then
+                    echo "SUCCESS: VM '$name' shutdown issued on $host."
+                else
+                    echo "ERROR: Failed to shut down VM '$name' on $host" >&2
+                fi
+                found=1
+                break 2
+            fi
+        done < <(get_vm_map_from_host "$host")
+    done
+
+    if [[ $found -eq 0 ]]; then
+        echo "WARNING: VM '$VM_INPUT' not found on any host." >&2
     fi
 done
+

@@ -1,42 +1,41 @@
 #!/bin/bash
-#
-# Shuts down Active Directory Domain Controllers for US103.
-#
-# Loads:
-#   - /orchestration/vars/global/US103-AD-DCs.vars
-#   - Optional: /orchestration/vars/optional/us103-shutdown-adds.sh.vars
-# Calls:
-#   - /orchestration/libexec/us103-shutdown-xo-vm.sh
+
+# Shuts down optional VMs and AD domain controllers for site US103
+# Uses us103-shutdown-xo-vm.sh to issue graceful shutdowns
 
 set -euo pipefail
 
-SCRIPT_NAME=$(basename "$0")
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(realpath "$SCRIPT_DIR/..")"
 
-GLOBAL_VARS="$REPO_ROOT/vars/global/US103-AD-DCs.vars"
-OPTIONAL_VARS="$REPO_ROOT/vars/optional/${SCRIPT_NAME}.vars"
-SHUTDOWN_VM_SCRIPT="$REPO_ROOT/libexec/us103-shutdown-xo-vm.sh"
+LIBEXEC="${REPO_ROOT}/libexec"
+GLOBAL_VARS="${REPO_ROOT}/vars/global/US103-AD-DCs.vars"
+OPTIONAL_VARS="${REPO_ROOT}/vars/optional/us103-start-adds.vars"
 
-declare -A AD_DC_MAP
+SHUTDOWN_SCRIPT="${LIBEXEC}/us103-shutdown-xo-vm.sh"
 
-echo "[$SCRIPT_NAME] Loading global vars: $GLOBAL_VARS"
-while IFS='=' read -r vm ip; do
-    [[ -z "$vm" || "$vm" =~ ^# ]] && continue
-    AD_DC_MAP["$vm"]="$ip"
-done < "$GLOBAL_VARS"
-
+# --- Step 1: Shutdown optional stack VMs if file exists ---
 if [[ -f "$OPTIONAL_VARS" ]]; then
-    echo "[$SCRIPT_NAME] Loading optional vars: $OPTIONAL_VARS"
-    # shellcheck source=/dev/null
-    source "$OPTIONAL_VARS"
+    echo "[INFO] Shutting down optional VMs from $OPTIONAL_VARS"
+    mapfile -t OPTIONAL_VMS < <(grep -vE '^\s*#' "$OPTIONAL_VARS" | grep -vE '^\s*$')
+    for vm in "${OPTIONAL_VMS[@]}"; do
+        echo "[INFO] Shutting down optional VM: $vm"
+        "$SHUTDOWN_SCRIPT" "$vm"
+    done
+else
+    echo "[INFO] No optional VMs to shut down (file not found: $OPTIONAL_VARS)"
 fi
 
-VM_LIST=("${!AD_DC_MAP[@]}")
-if [[ "${#VM_LIST[@]}" -eq 0 ]]; then
-    echo "[$SCRIPT_NAME] ERROR: No VMs to shut down"
+# --- Step 2: Shutdown AD DCs from global vars file ---
+if [[ -f "$GLOBAL_VARS" ]]; then
+    echo "[INFO] Shutting down AD Domain Controllers from $GLOBAL_VARS"
+    mapfile -t DC_NAMES < <(grep -vE '^\s*#' "$GLOBAL_VARS" | grep -vE '^\s*$' | cut -d= -f1)
+    for dc in "${DC_NAMES[@]}"; do
+        echo "[INFO] Shutting down AD DC: $dc"
+        "$SHUTDOWN_SCRIPT" "$dc"
+    done
+else
+    echo "[ERROR] AD DC list not found: $GLOBAL_VARS" >&2
     exit 1
 fi
 
-echo "[$SCRIPT_NAME] Shutting down Domain Controllers: ${VM_LIST[*]}"
-"$SHUTDOWN_VM_SCRIPT" "${VM_LIST[@]}"

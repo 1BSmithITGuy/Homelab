@@ -1,69 +1,100 @@
 #!/bin/bash
-# us103-shutdown-k8s.sh - Gracefully cordon and shut down all K8s VMs at site US103
-#
-# Phase 1: Cordon each node using kubectl (run locally from the jump station)
-# Phase 2: Shutdown each VM over SSH (using hostname or fallback IP lookup)
-#
-# VM names come from:
-#   /orchestration/vars/global/US103-k8s-servers.vars
-# Optional overrides:
-#   /orchestration/vars/optional/us103-shutdown-k8s.vars
+
+# Gracefully shuts down the Kubernetes cluster for US103.
+# - Shutdown additional stack VMs via XO
+# - Cordon & shutdown all worker nodes (non-control-plane)
+# - Shutdown master node last via SSH (by IP)
 
 set -euo pipefail
 
-SCRIPT_NAME=$(basename "$0" .sh)
-VARS_FILE="/orchestration/vars/global/US103-k8s-servers.vars"
-OPTIONAL_VARS="/orchestration/vars/optional/${SCRIPT_NAME}.vars"
-GET_IP_SCRIPT="$(dirname "$0")/us103-get-xo-vm-ip.sh"
+SSH_USER="bssadm"  # Matches your sudoers configuration
 
-# Ensure vars file is present
-if [[ ! -f "$VARS_FILE" ]]; then
-    echo "❌ Missing required vars file: $VARS_FILE"
-    exit 1
-fi
-source "$VARS_FILE"
+VARS_DIR="$(dirname "${BASH_SOURCE[0]}")/../vars"
+LIBEXEC_DIR="$(dirname "${BASH_SOURCE[0]}")/../libexec"
 
-# Load optional overrides
-[[ -f "$OPTIONAL_VARS" ]] && source "$OPTIONAL_VARS"
+GLOBAL_K8S_VARS="${VARS_DIR}/global/US103-k8s-servers.vars"
+OPTIONAL_STACK_VARS="${VARS_DIR}/optional/us103-start-k8s.vars"
 
-# --- Function: Cordon a node across all available kube contexts ---
-cordon_node() {
-    local nodename="$1"
-    local found=0
-    for ctx in $(kubectl config get-contexts -o name); do
-        if kubectl --context="$ctx" get node "$nodename" &>/dev/null; then
-            echo "🔒 Cordon: $nodename (context: $ctx)"
-            kubectl --context="$ctx" cordon "$nodename"
-            found=1
-        fi
+# Load context and worker list
+source "$GLOBAL_K8S_VARS"
+KUBECTL_CONTEXT="$context"
+WORKERS=("${workers[@]}")
+
+# Step 1: Shutdown additional stack VMs via XO
+if [[ -f "$OPTIONAL_STACK_VARS" ]]; then
+    echo "[INFO] Shutting down additional stack VMs listed in: $OPTIONAL_STACK_VARS"
+    mapfile -t ADDITIONAL_VMS < "$OPTIONAL_STACK_VARS"
+    for vm_name in "${ADDITIONAL_VMS[@]}"; do
+        echo "[INFO] Attempting shutdown of additional VM: $vm_name"
+        "$LIBEXEC_DIR/us103-shutdown-xo-vm.sh" "$vm_name"
     done
-    [[ "$found" -eq 0 ]] && echo "⚠️  Node $nodename not found in any context"
-}
+else
+    echo "[INFO] No optional stack VMs to shut down."
+fi
 
-# --- Phase 1: Cordon all nodes first ---
-echo "📌 Cordoning all Kubernetes nodes first..."
-for vm in "${K8S_VMS[@]}"; do
-    cordon_node "$vm"
-done
+# Step 2: Build map of node name -> IP
+echo "[INFO] Mapping node names to IP addresses..."
+declare -A NODE_IP_MAP
+while read -r name ip; do
+    NODE_IP_MAP["$name"]="$ip"
+done < <(kubectl --context="$KUBECTL_CONTEXT" get nodes -o wide | awk 'NR>1 {print $1, $6}')
 
-# --- Phase 2: Shutdown each VM ---
-echo "🔻 Shutting down all VMs..."
-for vm in "${K8S_VMS[@]}"; do
-    echo "➡️  Processing $vm..."
-
-    # Try SSH via hostname
-    if ssh -o ConnectTimeout=5 -o BatchMode=yes "$vm" "true" 2>/dev/null; then
-        TARGET="$vm"
+# Step 3: Cordon all worker nodes and collect shutdown list
+echo "[INFO] Cordoning all worker nodes..."
+SHUTDOWN_NODES=()
+while read -r node; do
+    [[ -z "$node" ]] && continue
+    if kubectl --context="$KUBECTL_CONTEXT" get node "$node" -o jsonpath='{.spec.unschedulable}' 2>/dev/null | grep -q "true"; then
+        echo "[INFO] $node is already cordoned. Skipping."
     else
-        echo "🔎 Host $vm not reachable by name, trying IP lookup..."
-        TARGET=$("$GET_IP_SCRIPT" "$vm")
-        if [[ -z "$TARGET" ]]; then
-            echo "❌ Could not resolve IP for $vm, skipping shutdown."
-            continue
-        fi
+        echo "[INFO] Cordoning $node"
+        kubectl --context="$KUBECTL_CONTEXT" cordon "$node"
     fi
+    SHUTDOWN_NODES+=("$node")
+done < <(kubectl --context="$KUBECTL_CONTEXT" get nodes --no-headers | grep -v 'control-plane' | awk '{print $1}')
 
-    echo "⏻ Sending shutdown command to $vm ($TARGET)..."
-    ssh "$TARGET" "sudo shutdown -h now" || echo "⚠️  Shutdown failed for $vm"
+# Step 4: Shutdown worker nodes by IP
+echo "[INFO] Shutting down worker nodes..."
+for node in "${SHUTDOWN_NODES[@]}"; do
+    ip="${NODE_IP_MAP[$node]}"
+    if [[ -n "$ip" ]]; then
+        echo "[INFO] Shutting down worker node: $node ($ip)"
+        if ssh -o BatchMode=yes "$SSH_USER@$ip" "sudo /sbin/shutdown now"; then
+            echo "[INFO] Shutdown command issued to $node ($ip)"
+        else
+            RC=$?
+            if [[ $RC -eq 255 ]]; then
+                echo "[INFO] SSH closed — $node ($ip) is shutting down."
+            else
+                echo "[WARN] Failed to shutdown worker node: $node ($ip) (exit code $RC)"
+            fi
+        fi
+    else
+        echo "[WARN] No IP found for worker node: $node"
+    fi
 done
+
+# Step 5: Identify and shutdown control-plane (master) node
+CONTROL_PLANE_NODE=$(kubectl --context="$KUBECTL_CONTEXT" get nodes --selector='node-role.kubernetes.io/control-plane' -o name | awk -F/ '{print $2}' | head -n 1)
+
+if [[ -n "$CONTROL_PLANE_NODE" ]]; then
+    MASTER_IP="${NODE_IP_MAP[$CONTROL_PLANE_NODE]}"
+    if [[ -n "$MASTER_IP" ]]; then
+        echo "[INFO] Shutting down master node: $CONTROL_PLANE_NODE ($MASTER_IP)"
+        if ssh -o BatchMode=yes "$SSH_USER@$MASTER_IP" "sudo /sbin/shutdown now"; then
+            echo "[INFO] Shutdown command issued to master $CONTROL_PLANE_NODE ($MASTER_IP)"
+        else
+            RC=$?
+            if [[ $RC -eq 255 ]]; then
+                echo "[INFO] SSH closed — master $CONTROL_PLANE_NODE ($MASTER_IP) is shutting down."
+            else
+                echo "[WARN] Failed to shutdown master node: $CONTROL_PLANE_NODE ($MASTER_IP) (exit code $RC)"
+            fi
+        fi
+    else
+        echo "[ERROR] Could not resolve IP for master node: $CONTROL_PLANE_NODE" >&2
+    fi
+else
+    echo "[ERROR] Could not identify a control-plane (master) node." >&2
+fi
 
