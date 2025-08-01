@@ -170,9 +170,14 @@ rm argocd
 ```bash
 sudo groupadd gitadmins
 sudo usermod -aG gitadmins bryan
+
 sudo mkdir -p /srv/repos
 sudo chown root:gitadmins /srv/repos
 sudo chmod 2770 /srv/repos
+
+sudo mkdir -p /srv/tmp
+sudo chown root:gitadmins /srv/tmp
+sudo chmod 2770 /srv/tmp
 ```
 
 Clone repo:

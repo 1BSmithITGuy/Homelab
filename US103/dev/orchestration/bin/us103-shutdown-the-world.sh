@@ -1,53 +1,60 @@
 #!/bin/bash
 #
 # Cleanly shut down the entire US103 lab environment
-# Shuts down K8s and AD, then cleanly shuts down hosts if possible
+# - Shuts down Kubernetes & AD
+# - Gracefully powers off Shutdown=Auto VMs
+# - Shuts down hosts if no non-auto VMs are left running
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
+SCRIPT_NAME="$(basename "$SCRIPT_PATH")"
+WORK_DIR="/srv/tmp/${SCRIPT_NAME%.*}"
+mkdir -p "$WORK_DIR"
+
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 REPO_ROOT="$(realpath "$SCRIPT_DIR/..")"
 BIN_DIR="$REPO_ROOT/bin"
 LIBEXEC_DIR="$REPO_ROOT/libexec"
-WORK_DIR="$REPO_ROOT/working"
-mkdir -p "$WORK_DIR"
 
-echo "🌍 Starting full lab shutdown (US103)..."
+echo "🌍 Starting full lab shutdown ($SCRIPT_NAME)..."
 
-# Step 1: Shutdown core services
-echo "🔧 Shutting down Kubernetes and Active Directory..."
-"$BIN_DIR/us103-shutdown-k8s.sh" > "$WORK_DIR/k8s_shutdown.log" 2>&1 &
-PID_K8S=$!
+# Step 1: Shutdown core services (K8s and AD)
+echo "🔧 Attempting to shut down Kubernetes cluster..."
+if kubectl version --request-timeout=5s &>/dev/null; then
+  "$BIN_DIR/us103-shutdown-k8s.sh" > "$WORK_DIR/k8s_shutdown.log" 2>&1 &
+  PID_K8S=$!
+else
+  echo "⚠️ Kubernetes not accessible. Skipping us103-shutdown-k8s.sh"
+  PID_K8S=""
+fi
+
+echo "🔧 Shutting down AD services..."
 "$BIN_DIR/us103-shutdown-adds.sh" > "$WORK_DIR/adds_shutdown.log" 2>&1 &
 PID_ADDS=$!
 
-wait $PID_K8S
-echo "✅ Kubernetes shutdown complete."
-wait $PID_ADDS
-echo "✅ AD shutdown complete."
+[[ -n "$PID_K8S" ]] && wait $PID_K8S && echo "✅ Kubernetes shutdown complete."
+wait $PID_ADDS && echo "✅ AD shutdown complete."
 
-# Step 2: Parse which VMs were asked to shut down from log
+# Step 2: Track VMs we attempted to shut down earlier (optional/known delay)
 declare -A SHUTDOWN_REQUESTED
 grep -hE "Attempting shutdown of additional VM:|Shutting down optional VM:|Shutting down AD DC:" "$WORK_DIR"/*.log | while read -r line; do
-    vm=$(echo "$line" | awk -F: '{print $NF}' | xargs | tr '[:upper:]' '[:lower:]')
-    SHUTDOWN_REQUESTED["$vm"]=1
+  vm=$(echo "$line" | awk -F: '{print $NF}' | xargs | tr '[:upper:]' '[:lower:]')
+  SHUTDOWN_REQUESTED["$vm"]=1
 done
 
-# Step 3: Pull latest object state
-echo "📡 Querying XO for current hosts and VMs..."
-HOSTS_FILE="$WORK_DIR/hosts.txt"
-VM_LIST_FILE="$WORK_DIR/all-vms.json"
+# Step 3: Pull latest VM and host data
 xo-cli list-objects type=host > "$WORK_DIR/hosts.json"
-xo-cli list-objects type=VM > "$VM_LIST_FILE"
+xo-cli list-objects type=VM > "$WORK_DIR/vms.json"
 
 jq -r '
   .[] | select(
     (.tags // [] | index("Env=Lab")) and
     (.tags // [] | index("Shutdown=Auto"))
   ) | "\(.uuid)\t\(.name_label)"
-' "$WORK_DIR/hosts.json" > "$HOSTS_FILE"
+' "$WORK_DIR/hosts.json" > "$WORK_DIR/hosts.txt"
 
-# Step 4: Main host loop
+# Step 4: Process each host
 while IFS=$'\t' read -r host_uuid host_name; do
   echo -e "\n🖥️ Evaluating host: $host_name ($host_uuid)"
   VM_OUTPUT=$(jq -r --arg host "$host_uuid" '
@@ -56,7 +63,7 @@ while IFS=$'\t' read -r host_uuid host_name; do
       (."$container" == $host)
     )
     | "\(.name_label)\t\(.uuid)\t\(.tags | join(","))"
-  ' "$VM_LIST_FILE")
+  ' "$WORK_DIR/vms.json")
 
   VMS_TO_SHUTDOWN=()
   NON_AUTO_VMS=()
@@ -65,54 +72,44 @@ while IFS=$'\t' read -r host_uuid host_name; do
     norm_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
     if [[ "$tags" == *"Shutdown=Auto"* ]]; then
       VMS_TO_SHUTDOWN+=("$name")
-    elif [[ "${SHUTDOWN_REQUESTED[$norm_name]+found}" ]]; then
-      echo "⏳ Waiting for VM '$name' (shutdown previously requested)..."
-      for i in {1..10}; do
+    elif [[ "${SHUTDOWN_REQUESTED[$norm_name]+_}" ]]; then
+      echo "⏳ Waiting for $name to shut down..."
+      for i in {1..6}; do
         state=$(xo-cli list-objects type=VM | jq -r --arg name "$name" '
           .[] | select(.name_label == $name) | .power_state
         ')
-        if [[ "$state" != "Running" ]]; then
-          echo "✅ $name is now off"
-          break
-        fi
-        echo "⏳ Still running: $name ... retry $i"
+        [[ "$state" != "Running" ]] && break
         sleep 5
       done
-      # Check one last time
-      state=$(xo-cli list-objects type=VM | jq -r --arg name "$name" '
-        .[] | select(.name_label == $name) | .power_state
-      ')
-      if [[ "$state" == "Running" ]]; then
-        NON_AUTO_VMS+=("$name")
-      fi
+      [[ "$state" == "Running" ]] && NON_AUTO_VMS+=("$name")
     else
       NON_AUTO_VMS+=("$name")
     fi
   done <<< "$VM_OUTPUT"
 
-  # Shutdown VMs with Shutdown=Auto
+  # Shutdown tagged VMs
   if [[ ${#VMS_TO_SHUTDOWN[@]} -gt 0 ]]; then
-    echo "📦 Shutting down ${#VMS_TO_SHUTDOWN[@]} VMs tagged Shutdown=Auto on $host_name..."
+    echo "📦 Shutting down ${#VMS_TO_SHUTDOWN[@]} auto-tagged VMs on $host_name..."
     for vm in "${VMS_TO_SHUTDOWN[@]}"; do
-      echo "🛑 Shutdown request: $vm"
+      echo "🛑 Shutting down $vm"
       "$LIBEXEC_DIR/us103-shutdown-xo-vm.sh" "$vm"
     done
   fi
 
-  # Host can only be shut down if all other VMs are gone
+  # Shutdown host only if no unapproved VMs remain
   if [[ ${#NON_AUTO_VMS[@]} -gt 0 ]]; then
-    echo "⚠️ Host $host_name has VMs not tagged Shutdown=Auto (or still shutting down):"
+    echo "⚠️ Host $host_name has VMs that are not Shutdown=Auto:"
     for vm in "${NON_AUTO_VMS[@]}"; do
       echo "    ⛔ $vm"
     done
-    echo "🛑 Skipping shutdown of host $host_name"
+    echo "🛑 Skipping host shutdown: $host_name"
     continue
   fi
 
-  echo "✅ All safe — shutting down host: $host_name"
-  ssh root@"$host_name" "shutdown -h now" || echo "❌ SSH failed to shutdown host: $host_name"
+  echo "🧯 Safe to shut down host: $host_name"
+  ssh root@"$host_name" "shutdown -h now" || echo "❌ SSH failed to shut down $host_name"
 
-done < "$HOSTS_FILE"
+done < "$WORK_DIR/hosts.txt"
 
-echo -e "\n🌌 Full shutdown completed."
+echo -e "\n✅ Global shutdown complete."
 

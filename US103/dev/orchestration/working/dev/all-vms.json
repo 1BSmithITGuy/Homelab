@@ -1521,7 +1521,7 @@
       1073741824,
       4294967296
     ],
-    "size": 4297039872
+    "size": 4294967296
   },
   "installTime": 1751318516,
   "name_description": "k8s master",
@@ -1543,7 +1543,7 @@
     "major": "22",
     "minor": "04"
   },
-  "power_state": "Running",
+  "power_state": "Halted",
   "hasVendorDevice": false,
   "snapshots": [],
   "startDelay": 0,
@@ -1555,15 +1555,6 @@
   ],
   "VTPMs": [],
   "virtualizationMode": "hvm",
-  "xenTools": {
-    "major": 6,
-    "minor": 6,
-    "version": 6.6
-  },
-  "managementAgentDetected": true,
-  "pvDriversDetected": true,
-  "pvDriversVersion": "6.6.80-0",
-  "pvDriversUpToDate": true,
   "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
   "$VBDs": [
     "11486875-3130-b121-32bd-8587341bfaec",
@@ -1771,9 +1762,10 @@
   "hasVendorDevice": false,
   "snapshots": [],
   "startDelay": 0,
-  "startTime": 1754060524,
+  "startTime": 1754086296,
   "secureBoot": false,
   "tags": [
+    "Shutdown=Auto",
     "Management=VM",
     "Layer=Virtualization"
   ],
@@ -2355,10 +2347,10 @@
   "hasVendorDevice": false,
   "snapshots": [],
   "startDelay": 0,
-  "startTime": 1754060526,
+  "startTime": 1754082466,
   "secureBoot": false,
   "tags": [
-    "Shutdown=Auto",
+    "Shutdown=Host",
     "Env=Lab"
   ],
   "VIFs": [

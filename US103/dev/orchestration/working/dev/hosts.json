@@ -657,7 +657,7 @@
   "name_description": "Default install",
   "name_label": "BSUS103VM02",
   "memory": {
-    "usage": 22862880768,
+    "usage": 17226412032,
     "size": 51539607552
   },
   "multipathing": false,
@@ -671,9 +671,8 @@
   "powerOnMode": "",
   "power_state": "Running",
   "residentVms": [
-    "b78ba2a5-ac4f-2db1-b8d6-0fc46c1a3c8a",
-    "502970d1-e537-334d-f458-37c6483f3671",
     "f03071fd-0c79-7bcc-3fd3-dd9fb5d202fa",
+    "502970d1-e537-334d-f458-37c6483f3671",
     "9b6776de-67d2-4285-be7f-c25202ed0544"
   ],
   "startTime": 1754060473,

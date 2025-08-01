@@ -4,7 +4,7 @@
 #  Last Update:  08/01/2025
 
 #  DESCRIPTION:
-    # This script updates the Orchestration server's hosts file to ensure DNS resolution to key infrastrcuture services.  
+    # This script updates the Orchestration server's hosts file to ensure DNS resolution to key infrastructure services.  
     # Backs up /etc/hosts, then updates it.  it will check for duplicate entries.
 #----------------------------------------------------------------------------------------------------------------
 
