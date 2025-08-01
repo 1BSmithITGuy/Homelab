@@ -1,0 +1,8 @@
+[INFO] No optional VMs to shut down (file not found: /srv/repos/Homelab/US103/dev/orchestration/vars/optional/us103-start-adds.vars)
+[INFO] Shutting down AD Domain Controllers from /srv/repos/Homelab/US103/dev/orchestration/vars/global/US103-AD-DCs.vars
+[INFO] Shutting down AD DC: INFUS103DC01
+Shutting down VM 'INFUS103DC01' (UUID: a12ab5b4-580e-9888-d7ae-ca197a09a62e) on host 10.0.0.52...
+SUCCESS: VM 'INFUS103DC01' shutdown issued on 10.0.0.52.
+[INFO] Shutting down AD DC: INFUS103DC02
+Shutting down VM 'INFUS103DC02' (UUID: ebb0424b-eb07-cb22-8de9-b6476110bea9) on host 10.0.0.52...
+SUCCESS: VM 'INFUS103DC02' shutdown issued on 10.0.0.52.

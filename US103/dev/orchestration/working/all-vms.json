@@ -1,0 +1,3718 @@
+[
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 4,
+    "number": 4
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": true,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      17179869184,
+      17179869184
+    ],
+    "static": [
+      1073741824,
+      17179869184
+    ],
+    "size": 17179869184
+  },
+  "installTime": 1751641767,
+  "name_description": "BSUS103DTDEV02",
+  "name_label": "OLD DEV - ubuntu (NOT LTS):  BSUS103DTDEV02",
+  "needsVtpm": false,
+  "other": {
+    "import_task": "OpaqueRef:40f9ffbf-8d70-08cd-5908-81cd12b891b3",
+    "xo:28d9c024": "{\"creation\":{\"date\":\"2025-06-13T00:27:03.215Z\",\"template\":\"ff1f3e17-84d9-4d72-962d-571c4ceb527b\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Noble Numbat 24.04 (preview)",
+    "mac_seed": "b0e2b372-1a04-5e05-dc34-e2f9a68d141c",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 25.04",
+    "uname": "6.14.0-23-generic",
+    "distro": "ubuntu",
+    "major": "25",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1752217391,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "67c82a34-e2ce-0d33-3502-4849658a6e88"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "30bfe7e1-294d-4a9c-b8e9-1905ca9d0ae5",
+  "$VBDs": [
+    "4400d46e-dde6-3a19-fa46-ba977eb0cc42",
+    "bf916d02-82d3-916a-6e25-293c3b26af92"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "70e419a4-d934-f952-ca1e-6fe94434ee93",
+  "uuid": "70e419a4-d934-f952-ca1e-6fe94434ee93",
+  "$pool": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "$poolId": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "_xapiRef": "OpaqueRef:b44112e5-13d5-908a-3701-5b13d918b098"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.0.1",
+    "1/ipv4/0": "216.15.81.26",
+    "2/ipv4/0": "10.0.1.1",
+    "3/ipv4/0": "10.0.1.41",
+    "4/ipv4/0": "10.0.2.1",
+    "5/ipv4/0": "10.0.0.201"
+  },
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "pool_migrate": "true",
+    "migrate_send": "true",
+    "shutdown": "true",
+    "clean_shutdown": "true",
+    "hard_shutdown": "true",
+    "clean_reboot": "true",
+    "pause": "true",
+    "suspend": "true",
+    "hard_reboot": "true",
+    "destroy": "true"
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cd"
+  },
+  "CPUs": {
+    "max": 3,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.0.1",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      134217728,
+      4294967296
+    ],
+    "size": 4297039872
+  },
+  "installTime": 1744927914,
+  "name_description": "OPNsense",
+  "name_label": "OPNsense",
+  "needsVtpm": false,
+  "other": {
+    "auto_poweron": "true",
+    "base_template_name": "Other install media",
+    "import_task": "OpaqueRef:6722d16c-b6f9-9afc-6d45-3b42b413eb69",
+    "mac_seed": "b916c453-8160-9fec-710e-75e8ed78c711",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "FreeBSD 14.2-RELEASE-p4",
+    "uname": "14.2-RELEASE-p4",
+    "distro": "FreeBSD"
+  },
+  "power_state": "Running",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1753737326,
+  "secureBoot": false,
+  "tags": [
+    "Layer=Network",
+    "Env=Prod"
+  ],
+  "VIFs": [
+    "9ab51a5e-b438-6ef6-1f34-e6610de1fc69",
+    "68ce64fb-7eeb-4cc0-8869-b1c5b35b4e69",
+    "ca390b46-0109-5f09-4f5d-1f4f651bf711",
+    "6e83edaa-20ed-c731-12d1-0d81ee418712",
+    "d75c7f0b-c589-e927-74fa-ba03d7648283",
+    "204d3841-957f-b4f5-2f5d-fa86b215e086"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "xenTools": {
+    "major": 6,
+    "minor": 2,
+    "version": 6.2
+  },
+  "managementAgentDetected": true,
+  "pvDriversDetected": true,
+  "pvDriversVersion": "6.2.1-76888",
+  "pvDriversUpToDate": true,
+  "$container": "30bfe7e1-294d-4a9c-b8e9-1905ca9d0ae5",
+  "$VBDs": [
+    "1edb901c-804b-2374-c459-64a801177b33",
+    "ad2ef56d-fc36-bf77-1695-2f40820bc4bd"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "cirrus",
+  "videoram": 4,
+  "id": "ebfeb871-9e89-cb3f-ee39-4ddf789296db",
+  "uuid": "ebfeb871-9e89-cb3f-ee39-4ddf789296db",
+  "$pool": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "$poolId": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "_xapiRef": "OpaqueRef:09aac74f-648d-dd0e-a4da-d3f5181b4a13"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.0.202",
+    "0/ipv6/0": "fe80::685d:37ff:fe2c:860"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "pool_migrate": "true",
+    "migrate_send": "true",
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cdn",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 4,
+    "number": 3
+  },
+  "creation": {
+    "date": "2025-06-03T18:13:13.437Z",
+    "template": "df1a0e64-3799-482b-aa9f-1ed713c7dac5",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.0.202",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": 1748974393,
+  "name_description": "k8s Master",
+  "name_label": "BSUS103KM01",
+  "needsVtpm": false,
+  "other": {
+    "xo:25a87d7d": "{\"creation\":{\"date\":\"2025-06-03T18:13:13.437Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:89415c4d-5254-4ea5-f02d-7cc8031ef302",
+    "mac_seed": "68b5e26c-b151-aa65-f103-b3b8a32abed9",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-144-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1754009526,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "3f09d4e8-89e0-295c-bffa-35d8b10b1c1f"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "30bfe7e1-294d-4a9c-b8e9-1905ca9d0ae5",
+  "$VBDs": [
+    "a53ba4fc-f7a9-7d26-4277-03b473546a7b",
+    "9196465d-fcfb-f0f3-80c1-e49dd7da19d5"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "25a87d7d-6de8-b024-2970-af9ed8bcd425",
+  "uuid": "25a87d7d-6de8-b024-2970-af9ed8bcd425",
+  "$pool": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "$poolId": "7eb3fe63-0e7d-85bb-7f49-dbb48de0cf61",
+  "_xapiRef": "OpaqueRef:0402de25-d047-d7e4-727b-7f58557c252f"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.1.2",
+    "0/ipv6/0": "fe80:0000:0000:0000:0f74:f88b:f989:6e8a"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 1
+  },
+  "creation": {
+    "date": "2025-05-21T18:48:19.197Z",
+    "template": "1c33af1c-e919-418c-ad45-85d7d6fb604a",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": {
+      "reason": "pv-driver-version-vulnerable",
+      "driver": "xeniface",
+      "version": "9.1.10.87"
+    }
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.1.2",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      1288490188,
+      1288490188
+    ],
+    "static": [
+      1073741824,
+      1288490188
+    ],
+    "size": 1288490188
+  },
+  "installTime": 1747864926,
+  "name_description": "Root Forest DC",
+  "name_label": "INFUS103DC01",
+  "needsVtpm": false,
+  "other": {
+    "xo:a12ab5b4": "{\"creation\":{\"date\":\"2025-05-21T18:48:19.197Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "8f54bf75-b9c0-0c75-b0bc-f036b36788ec",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Microsoft Windows Server 2022 Datacenter Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
+    "distro": "windows",
+    "major": "10",
+    "minor": "0",
+    "spmajor": "0",
+    "spminor": "0"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 10,
+  "startTime": 1754009459,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform"
+  ],
+  "VIFs": [
+    "bfa72243-dce6-d8ae-0c59-4f265a4727d0"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "a155ac0c-eeab-ffe0-4d7f-9d12ec942add",
+    "b689468e-56fa-06a9-de1c-e26565bf720c",
+    "07c68401-2c09-7129-7a04-6df447c4efd4"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "a12ab5b4-580e-9888-d7ae-ca197a09a62e",
+  "uuid": "a12ab5b4-580e-9888-d7ae-ca197a09a62e",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:f824db61-b90b-f190-d48d-0e012cc55430"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.30",
+    "0/ipv6/0": "fe80:0000:0000:0000:43bf:c9b4:59fa:c60b"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-05-23T00:36:00.110Z",
+    "template": "1c33af1c-e919-418c-ad45-85d7d6fb604a",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": {
+      "reason": "pv-driver-version-vulnerable",
+      "driver": "xeniface",
+      "version": "9.1.10.87"
+    }
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.2.30",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": 1747960559,
+  "name_description": "Remote desktop server for admin",
+  "name_label": "INFUS103TS01",
+  "needsVtpm": false,
+  "other": {
+    "xo:ac86753c": "{\"creation\":{\"date\":\"2025-05-23T00:36:00.110Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "cd5f04f4-5259-cbdb-a13d-b977d59e2a9f",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Microsoft Windows Server 2022 Datacenter Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
+    "distro": "windows",
+    "major": "10",
+    "minor": "0",
+    "spmajor": "0",
+    "spminor": "0"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 15,
+  "startTime": 1753657508,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Application"
+  ],
+  "VIFs": [
+    "0e1e2e82-c744-fe4e-d5b5-644b7c826b44"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "9fefb6dd-3216-0fa0-bc18-87538e219398",
+    "7188287d-edf1-9a27-e9f6-90f0dee34625",
+    "516d18dd-e67e-562c-6649-5ae55ab1f70d"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 16,
+  "coresPerSocket": 2,
+  "id": "ac86753c-6374-dd45-249e-c42b273e3c52",
+  "uuid": "ac86753c-6374-dd45-249e-c42b273e3c52",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:f362d996-553a-2142-c233-664e12e81b78"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 1
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      1288490188,
+      1288490188
+    ],
+    "static": [
+      1073741824,
+      1288490188
+    ],
+    "size": 1288490188
+  },
+  "installTime": null,
+  "name_description": "Second root DC",
+  "name_label": "INFUS103DC02 - Domain Controller backup - (20250531T004532Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:schedule": "bb977b1d-6345-40ef-865a-4839e35a8980",
+    "xo:backup:vm": "ebb0424b-eb07-cb22-8de9-b6476110bea9",
+    "xo:backup:job": "3128ae94-ba4b-48e8-a048-38023db19eab",
+    "xo:backup:datetime": "20250531T00:45:32Z",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "auto_poweron": "true",
+    "xo:ebb0424b": "{\"creation\":{\"date\":\"2025-05-22T21:22:38.472Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "4a959293-40a9-d436-99b2-960d7b457509",
+    "install-methods": "cdrom",
+    "xo:copy_of": "656c2107-cc5c-e801-5b53-4f4702e66c96"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform",
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "e03f166b-64f9-8bcd-eb8b-9e7b7761c7ae"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "9e2694b6-11b3-88c9-0b49-a1132213b577",
+    "0148c145-73bf-508a-2acb-adbf76c1157b"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "b9e760ba-6f65-3930-624c-28d7fddaa945",
+  "uuid": "b9e760ba-6f65-3930-624c-28d7fddaa945",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:e4bf498c-c433-6d1b-03b0-ab401ba5e3b4"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 1
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      2147483648,
+      2147483648
+    ],
+    "static": [
+      1073741824,
+      2147483648
+    ],
+    "size": 2147483648
+  },
+  "installTime": null,
+  "name_description": "Root Forest DC",
+  "name_label": "INFUS103DC01 - Domain Controller backup - (20250531T004537Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:vm": "a12ab5b4-580e-9888-d7ae-ca197a09a62e",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:datetime": "20250531T00:45:37Z",
+    "xo:backup:schedule": "bb977b1d-6345-40ef-865a-4839e35a8980",
+    "xo:backup:job": "3128ae94-ba4b-48e8-a048-38023db19eab",
+    "auto_poweron": "true",
+    "xo:a12ab5b4": "{\"creation\":{\"date\":\"2025-05-21T18:48:19.197Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "8f54bf75-b9c0-0c75-b0bc-f036b36788ec",
+    "install-methods": "cdrom",
+    "xo:copy_of": "af5ce7f7-59ad-1b40-56d3-cbbfc4adcee4"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform",
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "dc69c276-5d16-45df-5719-cc3e229d252b"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "f0b3c9d5-7645-f9a9-b7c9-f2c2134c43e1",
+    "eaa99fb6-304a-136f-80b8-6b8e29988b77"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "ccfe23eb-88b8-f3c6-0322-07c51499ce6b",
+  "uuid": "ccfe23eb-88b8-f3c6-0322-07c51499ce6b",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:db6bee69-bcc1-efcb-1fdd-083ba5fb6212"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": null,
+  "name_description": "k8s worker node 1",
+  "name_label": "bsus103k-8w01 - Replication_Manual-K8s - (20250720T192334Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:backup:vm": "e967306b-6cc2-c7e3-4ffe-876d29fcf26e",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:datetime": "20250720T19:23:34Z",
+    "xo:e967306b": "{\"creation\":{\"date\":\"2025-06-30T21:39:46.949Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "3ad9534c-7bea-1d5a-62c9-65a9ae030bf6",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "63be3d8f-3100-83e3-1a4a-0fa201985ff3"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "2074495c-bef0-7ee4-9059-b4a09de5d99c"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "1787dd89-e825-cdb0-a744-82d5367d07f7",
+    "55dd5eee-349c-5fef-a0ff-697facc95dfb"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "fbf5b438-cba3-7106-8e4e-c15e33396a98",
+  "uuid": "fbf5b438-cba3-7106-8e4e-c15e33396a98",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:d6e8757c-977f-f96c-c967-bd0ea57903f3"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 3,
+    "number": 3
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      5368709120,
+      5368709120
+    ],
+    "static": [
+      1073741824,
+      5368709120
+    ],
+    "size": 5368709120
+  },
+  "installTime": null,
+  "name_description": "Jump station, orchestration",
+  "name_label": "bsus103jump01 - Replication_Manual-bsus103jump01 - (20250728T220843Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:job": "41810d57-5963-4746-8ca4-15c222bbda71",
+    "xo:backup:vm": "502970d1-e537-334d-f458-37c6483f3671",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:datetime": "20250728T22:08:43Z",
+    "xo:backup:schedule": "8ab5cafc-8c20-45eb-86c5-584aabf3904f",
+    "xo:502970d1": "{\"creation\":{\"date\":\"2025-07-27T17:35:54.834Z\",\"template\":\"ff1f3e17-84d9-4d72-962d-571c4ceb527b\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Noble Numbat 24.04 (preview)",
+    "import_task": "OpaqueRef:2ac8c5af-da79-4e9b-51f3-9efd871af6d1",
+    "mac_seed": "31cbda2d-1f88-63ed-84d5-bedcdc63341e",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "a0c70a1d-33e9-2504-e98c-9597ac11a4da"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "dd3395e7-1443-9981-93b5-6c0604fb8e86"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "a413aeab-bef9-f703-4684-f86c8425232b",
+    "6617dbfb-ac7b-13b5-eb04-1f0c0676a68d",
+    "3fa90246-6e1d-183a-670e-a0591f1594fa"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "942654cf-c3a5-3da7-7fba-60019e0bc911",
+  "uuid": "942654cf-c3a5-3da7-7fba-60019e0bc911",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:d3b410d5-979e-0509-aba5-f1a3c3add64f"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 4,
+    "number": 4
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      8589934592,
+      8589934592
+    ],
+    "static": [
+      1073741824,
+      8589934592
+    ],
+    "size": 8589934592
+  },
+  "installTime": 1752218268,
+  "name_description": "BSUS103DTDEV02",
+  "name_label": "DEV - ubuntu (NOT LTS):  BSUS103DTDEV02_clone",
+  "needsVtpm": false,
+  "other": {
+    "xo:28d9c024": "{\"creation\":{\"date\":\"2025-06-13T00:27:03.215Z\",\"template\":\"ff1f3e17-84d9-4d72-962d-571c4ceb527b\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Noble Numbat 24.04 (preview)",
+    "import_task": "OpaqueRef:2ac8c5af-da79-4e9b-51f3-9efd871af6d1",
+    "mac_seed": "14117d9e-f9fa-6642-9209-26c5f40d7823",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 25.04",
+    "uname": "6.14.0-15-generic",
+    "distro": "ubuntu",
+    "major": "25",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1752218155,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "c9a6046c-27d3-dc4b-1da5-10b2d788b172"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "66e0cade-e7e1-fb94-9ac1-fe663690e1a2",
+    "69d78f37-fa23-bcdb-0cf2-a1ac07d42416"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "9acc7875-aab8-c470-e711-95fe5dc98c3e",
+  "uuid": "9acc7875-aab8-c470-e711-95fe5dc98c3e",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:d0e9c417-3a88-22be-f8ca-e85e2239fcd5"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "affinityHost": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "attachedPcis": [
+    "0000:00:17.0"
+  ],
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "hard_reboot": "true",
+    "hard_shutdown": "true",
+    "pause": "true",
+    "suspend": "true",
+    "shutdown": "true",
+    "clean_shutdown": "true",
+    "clean_reboot": "true",
+    "destroy": "true",
+    "pool_migrate": "true",
+    "migrate_send": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 3,
+    "number": 3
+  },
+  "creation": {
+    "date": "2025-06-05T22:41:35.989Z",
+    "template": "552bce37-51b2-445d-84f2-5f33fa112d7e",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      8589934592,
+      8589934592
+    ],
+    "static": [
+      134217728,
+      8589934592
+    ],
+    "size": 8589934592
+  },
+  "installTime": 1749163295,
+  "name_description": "TrueNas - Source",
+  "name_label": "BSUS103TNS01",
+  "needsVtpm": false,
+  "other": {
+    "pci": "0/0000:00:17.0",
+    "xo:fdacfaf2": "{\"creation\":{\"date\":\"2025-06-05T22:41:35.989Z\",\"template\":\"552bce37-51b2-445d-84f2-5f33fa112d7e\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Other install media",
+    "import_task": "OpaqueRef:ac0d30a4-6e42-a5ff-a3b2-4de6bbff00d7",
+    "mac_seed": "e8954e9c-5d00-2b18-2b56-2469a88af247",
+    "install-methods": "cdrom"
+  },
+  "os_version": {},
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 5,
+  "startTime": 1753131944,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "8f1b1fc9-2d03-6c3e-7e0b-f77c2d180630",
+    "e423cc9e-8f5d-3219-4a9c-ca93550e3890"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "8e85aac0-600e-1609-6168-c0798196074e",
+    "df41ce16-eff5-e805-8376-e2195f86125e"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "nicType": "e1000",
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "536870912",
+    "vm-data": ""
+  },
+  "vga": "cirrus",
+  "videoram": 4,
+  "id": "fdacfaf2-af64-cdee-69e1-08f89c4c8541",
+  "uuid": "fdacfaf2-af64-cdee-69e1-08f89c4c8541",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:d029df7f-b550-43a7-546d-26c5f175e64b"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.1.42",
+    "0/ipv6/0": "fe80:0000:0000:0000:8037:6b1f:1262:7855"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cd"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 1
+  },
+  "creation": {
+    "date": "2025-05-28T22:07:02.653Z",
+    "template": "35e1c177-d378-c4d1-b5e4-c3d83fd5988c",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.1.42",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      1073741824,
+      1073741824
+    ],
+    "static": [
+      1073741824,
+      1073741824
+    ],
+    "size": 1073741824
+  },
+  "installTime": 1748470022,
+  "name_description": "Certificate Authority",
+  "name_label": "INFUS103CA01",
+  "needsVtpm": false,
+  "other": {
+    "xo:e34c4630": "{\"creation\":{\"date\":\"2025-05-28T22:07:02.653Z\",\"template\":\"35e1c177-d378-c4d1-b5e4-c3d83fd5988c\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:35e1c177": "{\"creation\":{\"date\":\"2025-05-28T21:28:51.605Z\",\"template\":\"673c3260-9321-7345-3be1-4428debfbde8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:673c3260": "{\"creation\":{\"date\":\"2025-05-27T21:19:08.083Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "7eaa0716-423a-b5f5-7939-1d2d5eab907e",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Microsoft Windows Server 2022 Datacenter Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
+    "distro": "windows",
+    "major": "10",
+    "minor": "0",
+    "spmajor": "0",
+    "spminor": "0"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 90,
+  "startTime": 1748788381,
+  "secureBoot": false,
+  "tags": [
+    "Layer=Platform",
+    "Env=Prod"
+  ],
+  "VIFs": [
+    "2c4ac254-e6d0-4d18-d393-3b02a53927e3"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "617190b6-df15-b90d-3810-c97846c30478",
+    "8a822b28-dbda-f247-80c6-374b0114c1b0"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "e34c4630-05f6-4788-de51-718fc0730c64",
+  "uuid": "e34c4630-05f6-4788-de51-718fc0730c64",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:cf126c56-100d-2421-726c-45a2e6ce2a47"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cdn",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": null,
+  "name_description": "k8s Worker",
+  "name_label": "BSUS103KW02 - Replication_Manual-K8s - (20250720T192008Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:datetime": "20250720T19:20:08Z",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:vm": "e83ae310-198e-2083-e062-14614d378e6c",
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:e83ae310": "{\"creation\":{\"date\":\"2025-06-03T19:35:08.265Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "be347615-2008-70ec-bd75-833171438b49",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "97c70c89-5e61-993f-8c33-1d11cc1118c8"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "68a15917-4d47-48a5-f1a0-2cc19c65bc7c"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "fb171999-134d-ac3a-023e-e9009e4980a5"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "7b9bc7fb-d8a1-35d3-13d4-7a851c50d079",
+  "uuid": "7b9bc7fb-d8a1-35d3-13d4-7a851c50d079",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:aa1155cd-e433-159d-8e9f-38bf71104c3c"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.20",
+    "0/ipv6/0": "fe80::8486:ffff:fe71:a0da"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-30T21:21:56.344Z",
+    "template": "f9f037f3-1d39-583e-2184-850a056f16c8",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.20",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4297039872
+  },
+  "installTime": 1751318516,
+  "name_description": "k8s master",
+  "name_label": "bsus103k-8m01",
+  "needsVtpm": false,
+  "other": {
+    "xo:b78ba2a5": "{\"creation\":{\"date\":\"2025-06-30T21:21:56.344Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "ba2d6687-037a-d34e-41a9-cd9dd842bb67",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-144-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Running",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1754009478,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "38be2d26-6dc7-5017-5f20-11c9f172d709"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "xenTools": {
+    "major": 6,
+    "minor": 6,
+    "version": 6.6
+  },
+  "managementAgentDetected": true,
+  "pvDriversDetected": true,
+  "pvDriversVersion": "6.6.80-0",
+  "pvDriversUpToDate": true,
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "11486875-3130-b121-32bd-8587341bfaec",
+    "bdc4bd93-0423-9808-ea02-049f2d7b6f7e",
+    "d36a3bdb-dc99-e7c5-31aa-65fa2a48ad25"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "b78ba2a5-ac4f-2db1-b8d6-0fc46c1a3c8a",
+  "uuid": "b78ba2a5-ac4f-2db1-b8d6-0fc46c1a3c8a",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:a99b0fc4-404d-ebd4-4e2c-73cca84f0ec4"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "c"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      268435456,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": null,
+  "name_description": "Xen Orchestra",
+  "name_label": "BSUS103XO01 - BSUS103XO01-Replication - (20250531T004256Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:datetime": "20250531T00:42:56Z",
+    "xo:backup:vm": "f03071fd-0c79-7bcc-3fd3-dd9fb5d202fa",
+    "xo:backup:schedule": "2451dabc-48b0-41d9-8a5e-95a7f2956a01",
+    "xo:backup:job": "adefc3a8-7b8f-494b-a119-427778379a77",
+    "auto_poweron": "true",
+    "import_task": "OpaqueRef:308871f1-f414-bccb-1883-3d2606580442",
+    "mac_seed": "f0888eaa-a33b-14fd-21ed-391ad6c3d4ac",
+    "xo:e8f4dca7": "{\"creation\":{\"date\":\"2023-11-18T12:22:25.440Z\",\"template\":\"c2aa197f-0af2-8925-3cd1-c704d714ff33\",\"user\":\"a0a5bbef-6916-429f-ac37-92e67cc617d5\"}}",
+    "base_template_name": "Debian Stretch 9.0",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "linux_template": "true",
+    "xo:copy_of": "c8705c62-f297-166b-2fd3-e20a7167e4c6"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Virtualization",
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "097c1dbb-212c-7841-a929-b96b89d1313d"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "1e448902-a286-54ee-0fec-2af2642953bb"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "cpuMask": [
+    0
+  ],
+  "id": "63c2f480-ec95-c024-7b89-9094ae34c9b3",
+  "uuid": "63c2f480-ec95-c024-7b89-9094ae34c9b3",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:99af630a-29a1-d1ba-3288-b286097f965d"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.0.50",
+    "0/ipv6/0": "fd91:8eff:2ba6:5c53:1cd0:b4ff:fef3:265e",
+    "0/ipv6/1": "fe80::1cd0:b4ff:fef3:265e",
+    "1/ipv4/0": "172.16.0.5",
+    "1/ipv6/0": "fe80::b825:f1ff:fe86:3fbc"
+  },
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "c"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.0.50",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      8589934592,
+      8589934592
+    ],
+    "static": [
+      1073741824,
+      8589934592
+    ],
+    "size": 8589922304
+  },
+  "installTime": null,
+  "name_description": "Xen Orchestra",
+  "name_label": "BSUS103XO01",
+  "needsVtpm": false,
+  "other": {
+    "auto_poweron": "true",
+    "import_task": "OpaqueRef:308871f1-f414-bccb-1883-3d2606580442",
+    "mac_seed": "f0888eaa-a33b-14fd-21ed-391ad6c3d4ac",
+    "xo:e8f4dca7": "{\"creation\":{\"date\":\"2023-11-18T12:22:25.440Z\",\"template\":\"c2aa197f-0af2-8925-3cd1-c704d714ff33\",\"user\":\"a0a5bbef-6916-429f-ac37-92e67cc617d5\"}}",
+    "base_template_name": "Debian Stretch 9.0",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "linux_template": "true"
+  },
+  "os_version": {
+    "name": "Debian 11.11",
+    "uname": "5.10.0-34-amd64",
+    "distro": "debian",
+    "major": "11",
+    "minor": "11"
+  },
+  "power_state": "Running",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1753976233,
+  "secureBoot": false,
+  "tags": [
+    "Management=VM",
+    "Layer=Virtualization"
+  ],
+  "VIFs": [
+    "85388c7a-d388-ba67-37d1-0067ef5e7516",
+    "ce587a21-0cc3-e19b-89cb-327745d4d7c3"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "xenTools": {
+    "major": 8,
+    "minor": 0,
+    "version": 8
+  },
+  "managementAgentDetected": true,
+  "pvDriversDetected": true,
+  "pvDriversVersion": "8.0.50-1",
+  "pvDriversUpToDate": true,
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "8592a452-47b1-fe7e-24b2-1382a20265ba",
+    "39adbc6f-ec57-ea2c-44ff-635b3e203f7c"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "cpuMask": [
+    0
+  ],
+  "id": "f03071fd-0c79-7bcc-3fd3-dd9fb5d202fa",
+  "uuid": "f03071fd-0c79-7bcc-3fd3-dd9fb5d202fa",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:97c696d9-dc19-782c-46dd-1fcaeb61db83"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.23",
+    "0/ipv6/0": "fe80::c026:1ff:fe40:4bee"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-30T21:44:23.029Z",
+    "template": "f9f037f3-1d39-583e-2184-850a056f16c8",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.23",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      6442450944,
+      6442450944
+    ],
+    "static": [
+      1073741824,
+      6442450944
+    ],
+    "size": 6442450944
+  },
+  "installTime": 1751319862,
+  "name_description": "k8s worker node 2",
+  "name_label": "bsus103k-8w02",
+  "needsVtpm": false,
+  "other": {
+    "xo:d35e8d1e": "{\"creation\":{\"date\":\"2025-06-30T21:44:23.029Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "56732bea-d6b5-235f-127d-54bfabebe35e",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-144-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1754009481,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "e276f0a0-c29a-16d5-3ba3-d90a17df5d7c"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "1d0b3494-afe8-f800-e844-6ae48a70c842",
+    "1e005cb7-a6ba-b713-acd2-1f617c539f53",
+    "9419300b-68aa-8569-8147-b277fc4de898"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "d35e8d1e-f151-98ea-fcad-56324fe7bebe",
+  "uuid": "d35e8d1e-f151-98ea-fcad-56324fe7bebe",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:96903781-9833-84d6-c7d4-a9a726fbd7b5"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "attachedPcis": [
+    "0000:00:17.0"
+  ],
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "pause": "true",
+    "hard_reboot": "true",
+    "shutdown": "true",
+    "clean_shutdown": "true",
+    "suspend": "true",
+    "hard_shutdown": "true",
+    "clean_reboot": "true",
+    "destroy": "true",
+    "pool_migrate": "true",
+    "migrate_send": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-06T22:10:22.652Z",
+    "template": "552bce37-51b2-445d-84f2-5f33fa112d7e",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      8589934592,
+      8589934592
+    ],
+    "static": [
+      134217728,
+      8589934592
+    ],
+    "size": 8589934592
+  },
+  "installTime": 1749247822,
+  "name_description": "TrueNas - Destination",
+  "name_label": "BSUS103TND01",
+  "needsVtpm": false,
+  "other": {
+    "pci": "0/0000:00:17.0",
+    "xo:c523e662": "{\"creation\":{\"date\":\"2025-06-06T22:10:22.652Z\",\"template\":\"552bce37-51b2-445d-84f2-5f33fa112d7e\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Other install media",
+    "import_task": "OpaqueRef:ac0d30a4-6e42-a5ff-a3b2-4de6bbff00d7",
+    "mac_seed": "59290389-ce88-6859-85bb-28b55ce26459",
+    "install-methods": "cdrom"
+  },
+  "os_version": {},
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 15,
+  "startTime": 1753034884,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "b11d7afa-bb24-162d-5b71-219b38665f16",
+    "756f1c96-c508-c651-7964-d8f4fb28351a"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "31a4bc50-e85d-2b2f-6316-6720d4b38903",
+    "5da83c41-c51d-bb11-2b83-c8498c957f71"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "536870912",
+    "vm-data": ""
+  },
+  "vga": "cirrus",
+  "videoram": 4,
+  "id": "c523e662-218d-5e5f-1302-5a99eeba3c97",
+  "uuid": "c523e662-218d-5e5f-1302-5a99eeba3c97",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:8a9c8612-8d02-684a-ed12-4344941e225d"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.1.3",
+    "0/ipv6/0": "fe80:0000:0000:0000:183d:e856:e619:7adb"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 1
+  },
+  "creation": {
+    "date": "2025-05-22T21:22:38.472Z",
+    "template": "1c33af1c-e919-418c-ad45-85d7d6fb604a",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": {
+      "reason": "pv-driver-version-vulnerable",
+      "driver": "xeniface",
+      "version": "9.1.10.87"
+    }
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.1.3",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      1288490188,
+      1288490188
+    ],
+    "static": [
+      1073741824,
+      1288490188
+    ],
+    "size": 1288490188
+  },
+  "installTime": 1747948958,
+  "name_description": "Second root DC",
+  "name_label": "INFUS103DC02",
+  "needsVtpm": false,
+  "other": {
+    "xo:ebb0424b": "{\"creation\":{\"date\":\"2025-05-22T21:22:38.472Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "4a959293-40a9-d436-99b2-960d7b457509",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Microsoft Windows Server 2022 Datacenter Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
+    "distro": "windows",
+    "major": "10",
+    "minor": "0",
+    "spmajor": "0",
+    "spminor": "0"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 20,
+  "startTime": 1754009458,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform"
+  ],
+  "VIFs": [
+    "301cabed-4e88-330c-28a6-6bdc963a5144"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "b4608d32-f1d3-fb8d-1e6b-90ddb2529f5a",
+    "0835a60c-1d74-f082-fcab-0de761db5b77",
+    "806c140e-a2d9-9f07-f5b5-c47e51c692e9"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "ebb0424b-eb07-cb22-8de9-b6476110bea9",
+  "uuid": "ebb0424b-eb07-cb22-8de9-b6476110bea9",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:72aba442-eca7-5367-6835-22dedee76878"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": null,
+  "name_description": "WSUS",
+  "name_label": "INFUS103WS01 - INFUS103WS01 - WSUS_Replication - (20250531T004308Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:schedule": "bb0e04cf-8ad7-46de-a9ea-472818ba79ef",
+    "xo:backup:datetime": "20250531T00:43:08Z",
+    "xo:backup:job": "c312bcd0-861c-47dd-a5fd-d2e1777b3a1f",
+    "xo:backup:vm": "499b06d2-351a-b57b-38b4-a5380ef66c00",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "auto_poweron": "true",
+    "xo:499b06d2": "{\"creation\":{\"date\":\"2025-05-24T23:05:19.822Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "01db4ca4-74ee-544c-cc6b-db5ea3cc906c",
+    "install-methods": "cdrom",
+    "xo:copy_of": "bbb10103-47cc-6b3c-90ef-4e301046ede6"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform",
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "2da4f6ea-fe08-8c7c-972b-720abf8e0424"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "1583953c-8f36-7a8f-06c8-4c89a0d2a2a7",
+    "09b53fc1-dd17-23aa-f524-44275fc4701b"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "99be029e-4a55-7993-aff2-7fca810dc488",
+  "uuid": "99be029e-4a55-7993-aff2-7fca810dc488",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:6e825b67-7673-6bae-2c42-2e664eb2bc39"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.14",
+    "0/ipv6/0": "fe80::74de:6fff:fe4a:dfe5"
+  },
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 3,
+    "number": 3
+  },
+  "creation": {
+    "date": "2025-07-27T17:35:54.834Z",
+    "template": "ff1f3e17-84d9-4d72-962d-571c4ceb527b",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.14",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      5368709120,
+      5368709120
+    ],
+    "static": [
+      1073741824,
+      5368709120
+    ],
+    "size": 5370781696
+  },
+  "installTime": 1753637754,
+  "name_description": "Jump station, orchestration",
+  "name_label": "bsus103jump01",
+  "needsVtpm": false,
+  "other": {
+    "auto_poweron": "true",
+    "xo:502970d1": "{\"creation\":{\"date\":\"2025-07-27T17:35:54.834Z\",\"template\":\"ff1f3e17-84d9-4d72-962d-571c4ceb527b\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Noble Numbat 24.04 (preview)",
+    "import_task": "OpaqueRef:2ac8c5af-da79-4e9b-51f3-9efd871af6d1",
+    "mac_seed": "31cbda2d-1f88-63ed-84d5-bedcdc63341e",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 25.04",
+    "uname": "6.14.0-24-generic",
+    "distro": "ubuntu",
+    "major": "25",
+    "minor": "04"
+  },
+  "power_state": "Running",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1753976987,
+  "secureBoot": false,
+  "tags": [
+    "Shutdown=Auto",
+    "Env=Lab"
+  ],
+  "VIFs": [
+    "e94e09dd-080d-9e91-23ab-cd8ffd566787"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "xenTools": {
+    "major": 7,
+    "minor": 30,
+    "version": 7.3
+  },
+  "managementAgentDetected": true,
+  "pvDriversDetected": true,
+  "pvDriversVersion": "7.30.0-12",
+  "pvDriversUpToDate": true,
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "fbdb4d40-43ba-00a9-bac3-d03504dcfc35",
+    "9125273d-2266-3e80-5144-878eaa12f6bb",
+    "7a9ed0e9-bb6c-4da8-4b91-2fb6b1a125b8",
+    "891b35b6-ad22-76da-caed-7bb3f8365ac8"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "502970d1-e537-334d-f458-37c6483f3671",
+  "uuid": "502970d1-e537-334d-f458-37c6483f3671",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:6bf269fd-7e80-0435-820e-2b074e0ccf58"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": true,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": null,
+  "name_description": "Remote desktop server for admin",
+  "name_label": "INFUS103TS01 - BSUS103TS01-CR - (20250529T014854Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:vm": "ac86753c-6374-dd45-249e-c42b273e3c52",
+    "xo:backup:schedule": "53168abe-6453-4eea-8e89-94d3974aa670",
+    "xo:backup:job": "dfbf8834-a668-4d96-a553-c7093f24832e",
+    "xo:backup:datetime": "20250529T01:48:54Z",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "auto_poweron": "true",
+    "xo:ac86753c": "{\"creation\":{\"date\":\"2025-05-23T00:36:00.110Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "cd5f04f4-5259-cbdb-a13d-b977d59e2a9f",
+    "install-methods": "cdrom",
+    "xo:copy_of": "1bcef402-7f36-c01f-239f-f7655ab0a7fb"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "4d0bc09e-0cc2-619f-51d3-3715cf70c19c"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "a263b916-1aeb-a1d7-3a2c-37d205a9dee6",
+    "6ca49368-13a3-5b0b-73d3-a588c02e6331"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 16,
+  "coresPerSocket": 2,
+  "id": "d1a345aa-a6bb-c7fe-52b9-af30b521c559",
+  "uuid": "d1a345aa-a6bb-c7fe-52b9-af30b521c559",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:6bd84e0e-4559-465b-fb9e-30ab15d657c0"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.1.43",
+    "0/ipv6/0": "fe80:0000:0000:0000:49b3:4504:3af1:7e2d"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "hard_shutdown": "true",
+    "clean_shutdown": "true",
+    "suspend": "true",
+    "hard_reboot": "true",
+    "shutdown": "true",
+    "pause": "true",
+    "clean_reboot": "true",
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cd",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-05-24T23:05:19.822Z",
+    "template": "1c33af1c-e919-418c-ad45-85d7d6fb604a",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": {
+      "reason": "pv-driver-version-vulnerable",
+      "driver": "xeniface",
+      "version": "9.1.10.87"
+    }
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.1.43",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      2684354560,
+      2684354560
+    ],
+    "static": [
+      1073741824,
+      2684354560
+    ],
+    "size": 2684354560
+  },
+  "installTime": 1748127919,
+  "name_description": "WSUS",
+  "name_label": "INFUS103WS01",
+  "needsVtpm": false,
+  "other": {
+    "xo:499b06d2": "{\"creation\":{\"date\":\"2025-05-24T23:05:19.822Z\",\"template\":\"1c33af1c-e919-418c-ad45-85d7d6fb604a\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Windows Server 2022 (64-bit)",
+    "import_task": "OpaqueRef:871dd8d4-3ce1-2799-1b95-2cc7e4f7bb99",
+    "mac_seed": "01db4ca4-74ee-544c-cc6b-db5ea3cc906c",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Microsoft Windows Server 2022 Datacenter Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
+    "distro": "windows",
+    "major": "10",
+    "minor": "0",
+    "spmajor": "0",
+    "spminor": "0"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 45,
+  "startTime": 1748788495,
+  "secureBoot": false,
+  "tags": [
+    "Env=Prod",
+    "Layer=Platform"
+  ],
+  "VIFs": [
+    "9ef1e255-6889-7762-1cce-04bf7ee1678d"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "0d0e6661-4872-c9c4-df1f-4decd000f321",
+    "aec2b363-bcda-3367-4857-75e591f8fcee",
+    "ad35d616-cafe-38ea-3f15-3249b8a27c01"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "coresPerSocket": 2,
+  "id": "499b06d2-351a-b57b-38b4-a5380ef66c00",
+  "uuid": "499b06d2-351a-b57b-38b4-a5380ef66c00",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:6757435c-a9b5-1bc0-9e2f-e711df4d6dde"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": null,
+  "name_description": "k8s Worker",
+  "name_label": "BSUS103KW01 - Replication_Manual-K8s - (20250720T191948Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:vm": "9356a51b-1c4c-1f07-4eaf-f0f76aafe8aa",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:backup:datetime": "20250720T19:19:48Z",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:9356a51b": "{\"creation\":{\"date\":\"2025-06-03T19:33:27.233Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "e20f8850-8f43-a843-8368-5726360c6d62",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "523180ab-644e-7992-dfef-309722568a79"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "ddfebfe6-8973-da3c-b932-656b0cd311d0"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "dd33cfe1-8ecc-c8e1-c348-3c6071e5412d"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "4b856fc7-71d5-b26e-f3b5-2f122fbbd776",
+  "uuid": "4b856fc7-71d5-b26e-f3b5-2f122fbbd776",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:5dc1eb28-3270-4085-611f-d5c914a30e53"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.0.39",
+    "0/ipv6/0": "fd91:8eff:2ba6:5c53:2377:d676:bbe:4a9c",
+    "0/ipv6/1": "fe80::426:d156:d8e3:3859"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "bios",
+    "order": "cd"
+  },
+  "CPUs": {
+    "max": 4,
+    "number": 4
+  },
+  "creation": {
+    "date": "2025-06-13T22:20:49.141Z",
+    "template": "552bce37-51b2-445d-84f2-5f33fa112d7e",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": true,
+  "mainIpAddress": "10.0.0.39",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      8589934592,
+      8589934592
+    ],
+    "static": [
+      134217728,
+      8589934592
+    ],
+    "size": 8589934592
+  },
+  "installTime": 1749855885,
+  "name_description": "Parrot OS",
+  "name_label": "DEV - BSUS103PADEV01",
+  "needsVtpm": false,
+  "other": {
+    "xo:bf98e986": "{\"creation\":{\"date\":\"2025-06-13T22:20:49.141Z\",\"template\":\"552bce37-51b2-445d-84f2-5f33fa112d7e\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Other install media",
+    "import_task": "OpaqueRef:ac0d30a4-6e42-a5ff-a3b2-4de6bbff00d7",
+    "mac_seed": "7d244642-1e42-8724-344c-86963444e743",
+    "install-methods": "cdrom"
+  },
+  "os_version": {
+    "name": "Parrot Security 6.4 (lorikeet)",
+    "uname": "6.12.12-amd64",
+    "distro": "debian",
+    "major": "6",
+    "minor": "4"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1750857823,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "03c62ad7-756d-8513-c30a-38a018b4a3a7"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "920da41d-363f-bf60-3278-90d83f5a8665",
+    "cfc2170d-7515-a8cd-790e-e328f7d53bb0"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "cirrus",
+  "videoram": 4,
+  "id": "bf98e986-faa8-22b6-ea8b-475be6b6da23",
+  "uuid": "bf98e986-faa8-22b6-ea8b-475be6b6da23",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:54504deb-154b-1792-5c4e-e8260e10f780"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.3",
+    "0/ipv6/0": "fe80::d86f:4bff:fe39:d767"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cdn",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-03T19:35:08.265Z",
+    "template": "df1a0e64-3799-482b-aa9f-1ed713c7dac5",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.3",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": 1748979308,
+  "name_description": "k8s Worker",
+  "name_label": "BSUS103KW02",
+  "needsVtpm": false,
+  "other": {
+    "xo:e83ae310": "{\"creation\":{\"date\":\"2025-06-03T19:35:08.265Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "be347615-2008-70ec-bd75-833171438b49",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-141-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1751494146,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "7b4691f6-f7bd-2592-e95f-6fc8cc46274b"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "4cc2b00c-4b28-4d2d-efaf-a4c39f8e7747",
+    "26bb0986-407c-f677-1a86-8e37cd6cfbac"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "e83ae310-198e-2083-e062-14614d378e6c",
+  "uuid": "e83ae310-198e-2083-e062-14614d378e6c",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:530d1e02-6602-e995-b66c-c2761669dd20"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.13"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "order": "cdn",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 5,
+    "number": 3
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.13",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      6442450944,
+      6442450944
+    ],
+    "static": [
+      1073741824,
+      6442450944
+    ],
+    "size": 6442450944
+  },
+  "installTime": 1752212285,
+  "name_description": "BSUS103DTDEV02",
+  "name_label": "DEL soon Jump_DEV - ubuntu (NOT LTS):  BSUS103DTDEV02",
+  "needsVtpm": false,
+  "other": {
+    "xo:28d9c024": "{\"creation\":{\"date\":\"2025-06-13T00:27:03.215Z\",\"template\":\"ff1f3e17-84d9-4d72-962d-571c4ceb527b\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Noble Numbat 24.04 (preview)",
+    "import_task": "OpaqueRef:2ac8c5af-da79-4e9b-51f3-9efd871af6d1",
+    "mac_seed": "2131e1aa-4e83-a743-fd9c-2906b6fef06f",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 25.04",
+    "uname": "6.14.0-24-generic",
+    "distro": "ubuntu",
+    "major": "25",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1753712298,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "f33bf824-ce22-03de-d7db-472c2e6da742"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "f8e1f5b7-1c9d-267d-1fbc-c9a37c8ff7da",
+    "8641dd0b-27c0-9ab8-2fad-09bddee68db6"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 4,
+  "id": "7a945598-ea80-f6df-7204-0661bc95dcd6",
+  "uuid": "7a945598-ea80-f6df-7204-0661bc95dcd6",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:51508bd6-3b44-630e-91d4-2df595b7459f"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.22",
+    "0/ipv6/0": "fe80::8852:bfff:fecb:e5a9"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-30T21:39:46.949Z",
+    "template": "f9f037f3-1d39-583e-2184-850a056f16c8",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.22",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": 1751319586,
+  "name_description": "k8s worker node 1",
+  "name_label": "bsus103k-8w01",
+  "needsVtpm": false,
+  "other": {
+    "xo:e967306b": "{\"creation\":{\"date\":\"2025-06-30T21:39:46.949Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "3ad9534c-7bea-1d5a-62c9-65a9ae030bf6",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-144-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1754009480,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "81fc53f0-b2d9-b0c6-dead-9b48aea575c4"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "c6d085d5-9c57-da50-1d54-451d9a9fe427",
+    "5b7cab70-d3f8-613c-fa4b-1586018d53df",
+    "26088635-e196-8138-35b8-2904464c2504"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "e967306b-6cc2-c7e3-4ffe-876d29fcf26e",
+  "uuid": "e967306b-6cc2-c7e3-4ffe-876d29fcf26e",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:4989c7fb-1966-fc29-a604-3c2f5b267f65"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": null,
+  "name_description": "k8s master",
+  "name_label": "bsus103k-8m01 - Replication_Manual-K8s - (20250720T192221Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:vm": "b78ba2a5-ac4f-2db1-b8d6-0fc46c1a3c8a",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:datetime": "20250720T19:22:21Z",
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:b78ba2a5": "{\"creation\":{\"date\":\"2025-06-30T21:21:56.344Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "ba2d6687-037a-d34e-41a9-cd9dd842bb67",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "e8c5d4a9-f6dc-8f11-fbe6-5e4453b9f7c1"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "97a6b9e6-1b32-f4b9-b13a-74ff6c0e269a"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "bf42d8e3-9c67-a245-e21d-f40ef21574dd",
+    "67da5903-99a7-3bf0-a68a-5c059c81a749"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "580ff017-4b22-9cdf-f04c-d8458d0a2d16",
+  "uuid": "580ff017-4b22-9cdf-f04c-d8458d0a2d16",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:45d399cc-9018-8693-4996-705f08412164"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.0.31",
+    "0/ipv6/0": "fd91:8eff:2ba6:5c53:643d:58ff:fe62:341a",
+    "0/ipv6/1": "fe80::643d:58ff:fe62:341a"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {},
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 1,
+    "number": 1
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.0.31",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      4294967296,
+      4294967296
+    ],
+    "static": [
+      1073741824,
+      4294967296
+    ],
+    "size": 4294967296
+  },
+  "installTime": 1751235163,
+  "name_description": "Template-Ubuntu_2204_Server_Base",
+  "name_label": "Template-Ubuntu_2204_Srv_Base_v4_clone",
+  "needsVtpm": false,
+  "notes": "I followed the documentation titled: Create and use custom XCP-NG templates: a guide for Ubuntu\nAt the following link:\nhttps://docs.xcp-ng.org/guides/create-use-custom-xcpng-ubuntu-templates/ \n\nThese were run on this template from the website above:\n\nsudo apt update && sudo apt upgrade\nsudo apt install xe-guest-utilities\nsudo apt install cloud-init\nsudo apt install cloud-initramfs-growroot\nsudo dpkg-reconfigure cloud-init\nNOTE: here you want to select NoCloud, ConfigDrive, and OpenStack\n\nsudo rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg\nsudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg\nsudo rm -rf /var/lib/cloud/instance\nsudo rm -f /etc/netplan/00-installer-config.yaml\n\nI also installed:\nsudo apt install -y curl wget htop unzip bash-completion net-tools dnsutils traceroute iputils-ping telnet\n\nI added custom .bashrc to /etc/skel and /root - both are different from each other.  \n\nThe following was run on the current template in prod, which has not been run on this VM yet:\n\nsudo rm -rf /var/lib/cloud/instances /var/lib/cloud/instance\nsudo rm -rf /var/log/cloud-init.log /var/log/cloud-init*\nsudo rm -f /etc/netplan/50-cloud-init.yaml\nsudo rm -f /etc/cloud/cloud.cfg.d/90-installer-network.cfg\nsudo truncate -s 0 /etc/machine-id\nThen you will shutdown and create the template.\n\nYou want to use this format for the \"Network Config\" YAML:\n\n#cloud-config\nnetwork:\n  version: 2\n  ethernets:\n    eth0:\n      dhcp4: false\n      addresses:\n        - 10.0.2.6/27\n      gateway4: 10.0.2.1\n      nameservers:\n        addresses:\n          - 10.0.2.1\n          - 1.1.1.1\nMake sure your IP is in CIDR notation.\n\nIf you have any trouble, in /var/log you want to look through the cloud-init.log to start, and there is another cloud-init log in there.",
+  "other": {
+    "xo:notes": "I followed the documentation titled: Create and use custom XCP-NG templates: a guide for Ubuntu\nAt the following link:\nhttps://docs.xcp-ng.org/guides/create-use-custom-xcpng-ubuntu-templates/ \n\nThese were run on this template from the website above:\n\nsudo apt update && sudo apt upgrade\nsudo apt install xe-guest-utilities\nsudo apt install cloud-init\nsudo apt install cloud-initramfs-growroot\nsudo dpkg-reconfigure cloud-init\nNOTE: here you want to select NoCloud, ConfigDrive, and OpenStack\n\nsudo rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg\nsudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg\nsudo rm -rf /var/lib/cloud/instance\nsudo rm -f /etc/netplan/00-installer-config.yaml\n\nI also installed:\nsudo apt install -y curl wget htop unzip bash-completion net-tools dnsutils traceroute iputils-ping telnet\n\nI added custom .bashrc to /etc/skel and /root - both are different from each other.  \n\nThe following was run on the current template in prod, which has not been run on this VM yet:\n\nsudo rm -rf /var/lib/cloud/instances /var/lib/cloud/instance\nsudo rm -rf /var/log/cloud-init.log /var/log/cloud-init*\nsudo rm -f /etc/netplan/50-cloud-init.yaml\nsudo rm -f /etc/cloud/cloud.cfg.d/90-installer-network.cfg\nsudo truncate -s 0 /etc/machine-id\nThen you will shutdown and create the template.\n\nYou want to use this format for the \"Network Config\" YAML:\n\n#cloud-config\nnetwork:\n  version: 2\n  ethernets:\n    eth0:\n      dhcp4: false\n      addresses:\n        - 10.0.2.6/27\n      gateway4: 10.0.2.1\n      nameservers:\n        addresses:\n          - 10.0.2.1\n          - 1.1.1.1\nMake sure your IP is in CIDR notation.\n\nIf you have any trouble, in /var/log you want to look through the cloud-init.log to start, and there is another cloud-init log in there.",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "a52b8d4e-e57d-f4c8-bcfb-928ed1db9c72",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-142-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1751082191,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "2ade93b9-e1df-4df5-42f9-eeeda4d2486b"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "167ee52a-74d6-6482-4928-018764d6671c",
+    "920ff543-1bcc-a5d8-7ff9-5ec8c229513a"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "cfa04b9f-070c-deab-57b8-88eccd6178a6",
+  "uuid": "cfa04b9f-070c-deab-57b8-88eccd6178a6",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:301e4723-f8ed-bac2-5ee5-4422a20b7cbb"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "order": "cdn",
+    "firmware": "uefi"
+  },
+  "CPUs": {
+    "max": 4,
+    "number": 3
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": null,
+  "name_description": "k8s Master",
+  "name_label": "BSUS103KM01 - Replication_Manual-K8s - (20250720T192141Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:vm": "25a87d7d-6de8-b024-2970-af9ed8bcd425",
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:backup:datetime": "20250720T19:21:41Z",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:25a87d7d": "{\"creation\":{\"date\":\"2025-06-03T18:13:13.437Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:89415c4d-5254-4ea5-f02d-7cc8031ef302",
+    "mac_seed": "68b5e26c-b151-aa65-f103-b3b8a32abed9",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "072f9afb-9987-204b-f080-de4440970ded"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "90a8d6d7-0ba9-6e3c-4896-03d5ea908cdf"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "05a76e7a-3835-e3a8-f07f-744165e0d7b1"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "06e2b4cb-276e-eb62-2dfc-1fb934dc48fb",
+  "uuid": "06e2b4cb-276e-eb62-2dfc-1fb934dc48fb",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:251c139f-f87b-fb1d-b3a8-93142f4cb93e"
+},
+{
+  "type": "VM",
+  "addresses": {
+    "0/ipv4/0": "10.0.2.2",
+    "0/ipv6/0": "fe80::c45f:58ff:fe18:393e"
+  },
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "destroy": "true"
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "creation": {
+    "date": "2025-06-03T19:33:27.233Z",
+    "template": "df1a0e64-3799-482b-aa9f-1ed713c7dac5",
+    "user": "9aa48a92-7517-40b5-b140-7df5f8c18daa"
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "mainIpAddress": "10.0.2.2",
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      3221225472,
+      3221225472
+    ],
+    "static": [
+      1073741824,
+      3221225472
+    ],
+    "size": 3221225472
+  },
+  "installTime": 1748979207,
+  "name_description": "k8s Worker",
+  "name_label": "BSUS103KW01",
+  "needsVtpm": false,
+  "other": {
+    "xo:9356a51b": "{\"creation\":{\"date\":\"2025-06-03T19:33:27.233Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "e20f8850-8f43-a843-8368-5726360c6d62",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp"
+  },
+  "os_version": {
+    "name": "Ubuntu 22.04.5 LTS",
+    "uname": "5.15.0-141-generic",
+    "distro": "ubuntu",
+    "major": "22",
+    "minor": "04"
+  },
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": 1751494138,
+  "secureBoot": false,
+  "tags": [],
+  "VIFs": [
+    "f8cb98e1-3c97-107c-2867-9d22fd2382e1"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "fdae1ebb-b2de-4051-9fac-57a1e11738e0",
+  "$VBDs": [
+    "b13e4e11-d482-b169-b0eb-76ed82797ff5",
+    "1a2e5585-b722-07ba-e918-6bb0d64fa0be"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 2,
+  "id": "9356a51b-1c4c-1f07-4eaf-f0f76aafe8aa",
+  "uuid": "9356a51b-1c4c-1f07-4eaf-f0f76aafe8aa",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:1edb797c-820e-06b5-bd58-2e9d66fa30d0"
+},
+{
+  "type": "VM",
+  "addresses": {},
+  "auto_poweron": false,
+  "bios_strings": {
+    "bios-vendor": "Xen",
+    "bios-version": "",
+    "system-manufacturer": "Xen",
+    "system-product-name": "HVM domU",
+    "system-version": "",
+    "system-serial-number": "",
+    "baseboard-manufacturer": "",
+    "baseboard-product-name": "",
+    "baseboard-version": "",
+    "baseboard-serial-number": "",
+    "baseboard-asset-tag": "",
+    "baseboard-location-in-chassis": "",
+    "enclosure-asset-tag": "",
+    "hp-rombios": "",
+    "oem-1": "Xen",
+    "oem-2": "MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d"
+  },
+  "blockedOperations": {
+    "start_on": "Start operation for this vm is blocked, clone it if you want to use it.",
+    "start": "Start operation for this vm is blocked, clone it if you want to use it."
+  },
+  "boot": {
+    "firmware": "uefi",
+    "order": "cdn"
+  },
+  "CPUs": {
+    "max": 2,
+    "number": 2
+  },
+  "current_operations": {},
+  "expNestedHvm": false,
+  "isNestedVirtEnabled": false,
+  "vulnerabilities": {
+    "xsa468": false
+  },
+  "viridian": false,
+  "high_availability": "",
+  "isFirmwareSupported": true,
+  "memory": {
+    "dynamic": [
+      6442450944,
+      6442450944
+    ],
+    "static": [
+      1073741824,
+      6442450944
+    ],
+    "size": 6442450944
+  },
+  "installTime": null,
+  "name_description": "k8s worker node 2",
+  "name_label": "bsus103k-8w02 - Replication_Manual-K8s - (20250720T192553Z)",
+  "needsVtpm": false,
+  "other": {
+    "xo:backup:job": "5790c80a-ad2c-4f0a-97c0-4871a1416d04",
+    "xo:backup:schedule": "d91d427d-d947-4c2f-ae43-ccd47da8bd1b",
+    "xo:backup:vm": "d35e8d1e-f151-98ea-fcad-56324fe7bebe",
+    "xo:backup:sr": "31441e76-a027-1bb1-292b-5f3b340e9dbb",
+    "xo:backup:datetime": "20250720T19:25:53Z",
+    "xo:d35e8d1e": "{\"creation\":{\"date\":\"2025-06-30T21:44:23.029Z\",\"template\":\"f9f037f3-1d39-583e-2184-850a056f16c8\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "xo:5e751943": "{\"creation\":{\"date\":\"2025-06-28T02:50:42.021Z\",\"template\":\"df1a0e64-3799-482b-aa9f-1ed713c7dac5\",\"user\":\"9aa48a92-7517-40b5-b140-7df5f8c18daa\"}}",
+    "base_template_name": "Ubuntu Jammy Jellyfish 22.04",
+    "import_task": "OpaqueRef:f508ad3d-ab88-c22e-6604-eb54cf2a3535",
+    "mac_seed": "56732bea-d6b5-235f-127d-54bfabebe35e",
+    "linux_template": "true",
+    "install-methods": "cdrom,nfs,http,ftp",
+    "xo:copy_of": "69093277-9d4d-67e6-df36-d87b8e7ddec8"
+  },
+  "os_version": null,
+  "power_state": "Halted",
+  "hasVendorDevice": false,
+  "snapshots": [],
+  "startDelay": 0,
+  "startTime": null,
+  "secureBoot": false,
+  "tags": [
+    "Continuous Replication"
+  ],
+  "VIFs": [
+    "31454ae2-1b8a-e5ec-3ed5-bad792d299fb"
+  ],
+  "VTPMs": [],
+  "virtualizationMode": "hvm",
+  "$container": "8632c8dd-1f8f-487c-93b5-bbfb13bd2afb",
+  "$VBDs": [
+    "2cd86890-c94d-9223-0836-951fc31060e2",
+    "5f0116e9-0138-6f73-1974-467eabb03835"
+  ],
+  "VGPUs": [],
+  "$VGPUs": [],
+  "xenStoreData": {
+    "vm-data/mmio-hole-size": "268435456",
+    "vm-data": ""
+  },
+  "vga": "std",
+  "videoram": 8,
+  "id": "db50d12c-13f5-29e0-b86b-ad221cf030fb",
+  "uuid": "db50d12c-13f5-29e0-b86b-ad221cf030fb",
+  "$pool": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "$poolId": "40e9bcb4-4b3e-ae00-05c0-517f44a02f82",
+  "_xapiRef": "OpaqueRef:14947dd4-4e48-5e6c-e474-1f7b36f45f27"
+}
+]
