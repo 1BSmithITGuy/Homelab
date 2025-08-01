@@ -214,6 +214,16 @@ current-context: us103-k3s01
 
 ---
 
+## 🔧 Hostfile 
+
+**Ensure key Infra resources are reachable if DNS is shutdown:**
+
+```bash
+sudo /srv/repos/Homelab/US103/prod/orchestration/bin/us103-update-orcserver-hostsfile.sh
+```
+
+---
+
 ## 🧪 TODO
 
 - [ ] Add `.bashrc` templates to `/etc/skel` and `/root`
