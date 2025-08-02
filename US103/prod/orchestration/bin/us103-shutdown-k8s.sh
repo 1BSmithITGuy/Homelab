@@ -1,9 +1,18 @@
 #!/bin/bash
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  08/02/2025
+#
+#  DESCRIPTION:
+#    Gracefully shuts down the Kubernetes cluster nodes for US103, including optional stack VMs and worker/master nodes.
+#
+#  PREREQUISITES:
+#    - Kubernetes context must be reachable
+#    - VM list defined in vars/global/US103-k8s-servers.vars
+#    - Optional VM list in vars/optional/us103-start-k8s.vars
+#----------------------------------------------------------------------------------------------------------------
 
-# Gracefully shuts down the Kubernetes cluster for US103.
-# - Shutdown additional stack VMs via XO
-# - Cordon & shutdown all worker nodes (non-control-plane)
-# - Shutdown master node last via SSH (by IP)
 
 set -euo pipefail
 

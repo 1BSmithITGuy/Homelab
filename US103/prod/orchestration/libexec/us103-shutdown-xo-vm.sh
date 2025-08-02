@@ -1,7 +1,20 @@
 #!/bin/bash
-
-# us103-shutdown-xo-vm.sh VM_NAME1 [VM_NAME2 ...]
-# Gracefully shuts down exact-matching VMs (case-insensitive) across multiple XCP-ng hosts
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  08/02/2025
+#
+#  DESCRIPTION:
+#    Starts one or more VMs by name using xo-cli and matches against case-insensitive names.
+#
+#  PREREQUISITES:
+#    - Requires working xo-cli
+#    - VM must exist in the XO object cache
+#    - Used by startup scripts
+#
+#  USAGE:  
+#    us103-shutdown-xo-vm.sh VM_NAME1 [VM_NAME2 ...]
+#----------------------------------------------------------------------------------------------------------------
 
 SSH_USER="root"
 XCPNG_HOSTS=("10.0.0.52" "10.0.0.51")  # Primary first, fallback second

@@ -1,14 +1,17 @@
+#!/bin/bash
 #----------------------------------------------------------------------------------------------------------------
 #  Bryan Smith
 #  BSmithITGuy@gmail.com
-#  Last Update:  08/01/2025
-
+#  Last Update:  08/02/2025
+#
 #  DESCRIPTION:
-    # This script updates the Orchestration server's hosts file to ensure DNS resolution to key infrastructure services.  
-    # Backs up /etc/hosts, then updates it.  it will check for duplicate entries.
+#    Updates the /etc/hosts file on orchestration servers to reflect lab DNS entries.
+#
+#  PREREQUISITES:
+#    - Requires sudo access to modify /etc/hosts
+#    - Parses current hostname and uses site code prefix
 #----------------------------------------------------------------------------------------------------------------
 
-#!/bin/bash
 set -euo pipefail
 
 echo "🔧 Starting /etc/hosts update process..."

@@ -2,15 +2,18 @@
 #----------------------------------------------------------------------------------------------------------------
 #  Bryan Smith
 #  BSmithITGuy@gmail.com
-#  Last Update:  07/25/2025
+#  Last Update:  08/02/2025
 #
 #  DESCRIPTION:
-#    Shared helper script to start one or more VMs using xo-cli.
-#    Usage: ./us103-start-xo-vm VM_NAME [VM_NAME ...]
+#    Starts one or more VMs by name using xo-cli and matches against case-insensitive names.
 #
 #  PREREQUISITES:
-#    - Run on Ubuntu jump station with xo-cli installed
-#    - SSH access and xo-cli login configured
+#    - Requires working xo-cli
+#    - VM must exist in the XO object cache
+#    - Used by startup scripts
+#    - SSH keys and xo-cli login configured
+#
+#  USAGE:  ./us103-start-xo-vm VM_NAME [VM_NAME ...]
 #----------------------------------------------------------------------------------------------------------------
 
 set -euo pipefail

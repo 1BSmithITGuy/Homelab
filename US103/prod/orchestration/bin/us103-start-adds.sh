@@ -1,12 +1,16 @@
 #!/bin/bash
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  08/02/2025
 #
-# Script to start Active Directory Domain Controllers (AD DCs)
-# for site US103.
+#  DESCRIPTION:
+#    Starts up AD domain controllers and optional stack VMs in correct order for US103.
 #
-# Loads VM hostname:IP pairs from /orchestration/vars/global/US103-AD-DCs.vars
-# Optionally loads /orchestration/vars/optional/us103-start-adds.sh.vars
-# Starts each listed VM using libexec/us103-start-xo-vm.sh
-# Attempts to restart and flush DNS services (non-fatal)
+#  PREREQUISITES:
+#    - Uses vars/global/US103-AD-DCs.vars and optional/us103-start-adds.vars
+#    - Requires: us103-start-xo-vm.sh
+#----------------------------------------------------------------------------------------------------------------
 
 set -euo pipefail
 
