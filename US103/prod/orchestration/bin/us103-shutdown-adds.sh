@@ -1,7 +1,18 @@
 #!/bin/bash
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  08/02/2025
+#
+#  DESCRIPTION:
+#    Shuts down AD domain controllers and optional stack VMs for US103 using xo-cli and vars files.
+#
+#  PREREQUISITES:
+#    - Domain controllers listed in vars/global/US103-AD-DCs.vars
+#    - Optional VMs listed in vars/optional/us103-start-adds.vars
+#    - Requires: us103-shutdown-xo-vm.sh
+#----------------------------------------------------------------------------------------------------------------
 
-# Shuts down optional VMs and AD domain controllers for site US103
-# Uses us103-shutdown-xo-vm.sh to issue graceful shutdowns
 
 set -euo pipefail
 

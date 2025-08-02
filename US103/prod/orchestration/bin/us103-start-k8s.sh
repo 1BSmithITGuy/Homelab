@@ -1,7 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/bash
+#----------------------------------------------------------------------------------------------------------------
+#  Bryan Smith
+#  BSmithITGuy@gmail.com
+#  Last Update:  08/02/2025
+#
+#  DESCRIPTION:
+#    Starts Kubernetes stack VMs in proper sequence and uncordons worker nodes if needed.
+#
+#  PREREQUISITES:
+#    - Uses vars/optional/us103-start-k8s.vars and global/US103-k8s-servers.vars
+#    - Requires: us103-start-xo-vm.sh
+#----------------------------------------------------------------------------------------------------------------
 
-# us103-start-k8s.sh
-# Starts Kubernetes cluster VMs listed in a vars file and uncordons nodes once ready.
 
 set -euo pipefail
 

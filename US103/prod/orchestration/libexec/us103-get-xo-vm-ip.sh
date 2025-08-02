@@ -1,24 +1,17 @@
 #!/bin/bash
-#---------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
 #  Bryan Smith
 #  BSmithITGuy@gmail.com
-#  Last Update:  07/21/2025
-
-#   DESCRIPTION:
-  #  Get a VM's IPv4 address using xo-cli and jq (case-insensitive)
-
-#   PREREQUISITES:
-  #  This script is intended to be run on an Ubuntu jump station that has xo-cli installed/configured
-        #   See jump station readme.md for instructions
-
-#   USAGE:
-    #   ./us103-get-xo-vm-ip.sh "<vm_name>"
-
-#   NOTES:
-  #  Only grabs the first IP.
-
-#--------------------------------------------------------------------------------
-
+#  Last Update:  08/02/2025
+#
+#  DESCRIPTION:
+#    Gets the IP address of a VM using xo-cli, with fallback logic if no address is set.
+#
+#  PREREQUISITES:
+#    - Requires xo-cli and jq
+#    - VM name must match exactly (case-insensitive)
+#    - Used for SSH-based shutdowns
+#----------------------------------------------------------------------------------------------------------------
 
 set -euo pipefail
 
