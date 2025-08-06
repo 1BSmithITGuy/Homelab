@@ -2,13 +2,14 @@
 #  06/30/2025
 #  -----------------------------------------------------------------------------------------------------------------------------------------
 #  For use with the template "Template-Ubuntu_2204_Srv_Base_v4"
-#  paste everything starting with #cloud-config in the "User config" field when creating a template; do not paste the comments above or below it.
-#  See readme for more details
+#  Saved in cloud config  on XO under "Ubuntu_2204_Srv_Base_v4"
+#  Copy from #cloud-config down.
+#  {name} is a variable - it will  grab the name from the the VM when creating the VM.
 #  -----------------------------------------------------------------------------------------------------------------------------------------
 
 #cloud-config
-hostname: v4final
-fqdn: v4final.testing.com
+hostname: {name}
+fqdn: {name}.ad.infutable.com
 manage_etc_hosts: true
 ssh_pwauth: true
 

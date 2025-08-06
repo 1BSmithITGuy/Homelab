@@ -233,6 +233,7 @@ sudo /srv/repos/Homelab/US103/prod/orchestration/bin/us103-update-orcserver-host
 
 - [ ] Add `.bashrc` templates to `/etc/skel` and `/root`
 - [ ] Finalize ArgoCD CLI and kubectl context helper scripts
+- [ ] Install terraform (or move all tools to a server/container)
 - [ ] Add automated backup routine for `/srv/repos`
 - [ ] Create template from this VM (remove keys, history, temp files)
 

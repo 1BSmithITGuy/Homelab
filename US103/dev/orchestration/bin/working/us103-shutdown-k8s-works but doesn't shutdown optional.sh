@@ -1,18 +1,7 @@
 #!/bin/bash
-#----------------------------------------------------------------------------------------------------------------
-#  Bryan Smith
-#  BSmithITGuy@gmail.com
-#  Last Update:  08/05/2025
-#
-#  DESCRIPTION:
-#    Gracefully shuts down the Kubernetes cluster nodes for US103, including optional stack VMs and worker/master nodes.
-#
-#  PREREQUISITES:
-#    - Kubernetes context must be reachable
-#    - VM list defined in vars/global/US103-k8s-servers.vars
-#    - Optional VM list in vars/optional/us103-start-k8s.vars
-#    - Access to the script:  /libexec/us103-shutdown-xo-vm.sh
-#----------------------------------------------------------------------------------------------------------------
+# us103-shutdown-k8s.sh
+# Cordons all running nodes in the selected cluster context
+# Then shuts down the corresponding VMs via centralized shutdown script
 
 SCRIPT_NAME=$(basename "$0")
 WORKDIR="/srv/tmp/${SCRIPT_NAME%.*}"
@@ -42,12 +31,12 @@ for node in $RUNNING_NODES; do
   SHUTDOWN_LIST+=("$node")
 done
 
-# Optional shutdown VMs: mapfile version
+# Optional shutdown VMs
 OPTIONAL_VARS_FILE="$(dirname "$0")/../vars/optional/us103-start-k8s.vars"
 if [[ -f "$OPTIONAL_VARS_FILE" ]]; then
   echo "[INFO] Loading optional shutdown targets from $OPTIONAL_VARS_FILE" | tee -a "$LOG"
-  mapfile -t optional_vms < <(grep -vE '^[[:space:]]*#' "$OPTIONAL_VARS_FILE" | sed '/^[[:space:]]*$/d')
-  SHUTDOWN_LIST+=("${optional_vms[@]}")
+  source "$OPTIONAL_VARS_FILE"
+  SHUTDOWN_LIST+=("${OPTIONAL_NODES[@]}")
 fi
 
 # Call centralized shutdown script

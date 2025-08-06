@@ -5,84 +5,95 @@
 #  Last Update:  08/02/2025
 #
 #  DESCRIPTION:
-#    Starts one or more VMs by name using xo-cli and matches against case-insensitive names.
+#    Shuts down VMs and verifies they are shutdown.  
 #
 #  PREREQUISITES:
 #    - Requires working xo-cli
 #    - VM must exist in the XO object cache
-#    - Used by startup scripts
-#
+#    - Used by shutdown scripts
+#    - SSH keys
 #  USAGE:  
-#    us103-shutdown-xo-vm.sh VM_NAME1 [VM_NAME2 ...]
+#    us103-shutdown-xo-vm.sh VM_NAME1 VM_NAME2
 #----------------------------------------------------------------------------------------------------------------
 
-SSH_USER="root"
-XCPNG_HOSTS=("10.0.0.52" "10.0.0.51")  # Primary first, fallback second
+SCRIPT_NAME=$(basename "$0")
+WORKDIR="/srv/tmp/${SCRIPT_NAME%.*}"
+mkdir -p "$WORKDIR"
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 VM_NAME1 [VM_NAME2 ...]" >&2
-    exit 1
-fi
+# Timeout settings
+SHUTDOWN_TIMEOUT_SECONDS=180  # 3 minutes
+CHECK_INTERVAL=1
 
-# Function to build VM name => UUID map from a given host
-get_vm_map_from_host() {
-    local host="$1"
-    local raw
-    declare -A map
-    raw=$(ssh -o BatchMode=yes "${SSH_USER}@${host}" xe vm-list power-state=running 2>/dev/null) || return 1
+# Track shutdown requests
+declare -A VM_HOST_MAP
+declare -A VM_UUID_MAP
 
-    local uuid="" name=""
-    while IFS= read -r line; do
-        if [[ "$line" =~ ^uuid ]]; then
-            uuid=$(echo "$line" | awk -F: '{print $2}' | xargs)
-            name=""
-        elif [[ "$line" =~ name-label ]]; then
-            name=$(echo "$line" | awk -F: '{print $2}' | xargs)
-        fi
+# Step 1: Collect all VMs to shut down and trigger shutdown in background
+for vm_name in "$@"; do
+  echo "🚀 Initiating shutdown for VM '$vm_name'..."
 
-        if [[ -n "$uuid" && -n "$name" ]]; then
-            if [[ "$name" =~ [Cc]ontrol\ domain ]]; then
-                uuid=""
-                name=""
-                continue
-            fi
-            key=$(echo "$name" | tr '[:upper:]' '[:lower:]')
-            map["$key"]="$uuid|$name"
-            uuid=""
-            name=""
-        fi
-    done <<< "$raw"
+  vm_data=$(xo-cli list-objects type=VM | jq -r --arg name "$vm_name" '
+    .[] | select(.name_label == $name) | {id, host: .["$container"]}
+  ')
 
-    for key in "${!map[@]}"; do
-        echo "$key|${map[$key]}"
-    done
-}
+  vm_uuid=$(echo "$vm_data" | jq -r '.id')
+  host_id=$(echo "$vm_data" | jq -r '.host')
 
-# Loop through each input VM
-for VM_INPUT in "$@"; do
-    found=0
-    vm_key=$(echo "$VM_INPUT" | tr '[:upper:]' '[:lower:]')
+  if [[ -z "$vm_uuid" || -z "$host_id" || "$host_id" == "null" ]]; then
+    echo "⚠️ WARNING: Could not find VM '$vm_name' or its host."
+    continue
+  fi
 
-    for host in "${XCPNG_HOSTS[@]}"; do
-        while IFS="|" read -r key value; do
-            [[ -z "$key" || -z "$value" ]] && continue
-            if [[ "$key" == "$vm_key" ]]; then
-                uuid="${value%%|*}"
-                name="${value#*|}"
-                echo "Shutting down VM '$name' (UUID: $uuid) on host $host..."
-                if ssh -o BatchMode=yes "${SSH_USER}@${host}" xe vm-shutdown uuid="$uuid"; then
-                    echo "SUCCESS: VM '$name' shutdown issued on $host."
-                else
-                    echo "ERROR: Failed to shut down VM '$name' on $host" >&2
-                fi
-                found=1
-                break 2
-            fi
-        done < <(get_vm_map_from_host "$host")
-    done
+  host_ip=$(xo-cli list-objects type=host | jq -r --arg id "$host_id" '
+    .[] | select(.id == $id) | .address
+  ')
 
-    if [[ $found -eq 0 ]]; then
-        echo "WARNING: VM '$VM_INPUT' not found on any host." >&2
-    fi
+  if [[ -z "$host_ip" ]]; then
+    echo "⚠️ WARNING: Could not resolve host IP for VM '$vm_name'."
+    continue
+  fi
+
+  echo "🛑 Sending shutdown for '$vm_name' (UUID: $vm_uuid) on host $host_ip..."
+  ssh root@"$host_ip" "xe vm-shutdown uuid=$vm_uuid" &
+  VM_HOST_MAP["$vm_name"]="$host_ip"
+  VM_UUID_MAP["$vm_name"]="$vm_uuid"
 done
 
+# Wait for background ssh shutdowns to complete
+wait
+
+# Step 2: Wait for all VMs to shut down (polling loop)
+echo "⏳ Waiting up to $SHUTDOWN_TIMEOUT_SECONDS seconds for all VMs to power off..."
+start_time=$(date +%s)
+
+pending_vms=("${!VM_HOST_MAP[@]}")
+
+while [[ ${#pending_vms[@]} -gt 0 ]]; do
+  sleep $CHECK_INTERVAL
+  new_pending=()
+
+  for vm in "${pending_vms[@]}"; do
+    host_ip="${VM_HOST_MAP[$vm]}"
+    uuid="${VM_UUID_MAP[$vm]}"
+
+    if ssh root@"$host_ip" "xe vm-list uuid=$uuid power-state=running --minimal" | grep -q .; then
+      new_pending+=("$vm")
+    else
+      echo "✅ VM '$vm' is now powered off."
+    fi
+  done
+
+  pending_vms=("${new_pending[@]}")
+
+  elapsed=$(( $(date +%s) - start_time ))
+  if [[ $elapsed -ge $SHUTDOWN_TIMEOUT_SECONDS ]]; then
+    echo "⏱️ Timeout reached. The following VMs did not shut down:"
+    for vm in "${pending_vms[@]}"; do
+      echo "    ❌ $vm"
+    done
+    exit 1
+  fi
+done
+
+echo "🎉 All VMs shut down successfully."
+exit 0

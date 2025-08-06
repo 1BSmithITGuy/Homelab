@@ -11,6 +11,7 @@ This subdirectory contains **required** variables that define the core infrastru
 Examples:
 - `US103-AD-DCs.vars` – Lists AD domain controller VM names.
 - `US103-k8s-servers.vars` – Defines the Kubernetes context and worker nodes for the US103 cluster.
+- `US103-Xen-Infra.vars` – Defines the Xen Infrastructure components.
 
 Example structure:
 ```bash
