@@ -4,6 +4,7 @@
 #  This is for user profile .bashrc shell customziations.  
 #  replace these files:  /etc/skel/.bashrc, and any exuisting user profiles .bashrc
 #  07/06/2025 - added kubectl aliases
+#  08/07/2025 - added orchestration aliases
 #  -----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -81,6 +82,11 @@ alias kn='kubens'
 alias bsdev='cd /srv/repos/Homelab/US103/dev/'
 alias bsprod='cd /srv/repos/Homelab/US103/prod/'
 alias bsdevorc='cd /srv/repos/Homelab/US103/dev/orchestration'
+
+#  Orchestration aliases (BSS)
+alias bsk8start='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-start-k8s.sh'
+alias bsk8shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-k8s.sh'
+alias bs103shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-the-world.sh'           
 
 # Bash completion
 if ! shopt -oq posix; then

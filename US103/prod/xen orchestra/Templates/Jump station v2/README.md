@@ -128,6 +128,7 @@ ssh-keygen -t ed25519 -C "k8s-automation"
 Deploy keys:
 
 ```bash
+ssh-copy-id bssadm@10.0.0.202
 ssh-copy-id bssadm@10.0.2.20
 ssh-copy-id bssadm@10.0.2.21
 ssh-copy-id bssadm@10.0.2.22
@@ -233,10 +234,10 @@ sudo /srv/repos/Homelab/US103/prod/orchestration/bin/us103-update-orcserver-host
 
 - [ ] Add `.bashrc` templates to `/etc/skel` and `/root`
 - [ ] Finalize ArgoCD CLI and kubectl context helper scripts
-- [ ] Install terraform (or move all tools to a server/container)
+- [ ] Install terraform (ideally create dedicated orc server/container)
 - [ ] Add automated backup routine for `/srv/repos`
 - [ ] Create template from this VM (remove keys, history, temp files)
-
+- [ ] Credential/key management
 ---
 
 ## 🗓️ Setup Timeline
