@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <appName>
+  namespace: <namespace>
+  labels:
+    app: <appName>
+spec:
+  replicas: <replicas>
+  selector:
+    matchLabels:
+      app: <appName>
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  template:
+    metadata:
+      labels:
+        app: <appName>
+    spec:
+      serviceAccountName: <appName>
+      containers:
+        - name: <appName>
+          image: <image>
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: <containerPort>
+          envFrom:
+            - configMapRef:
+                name: <appName>-config
+            - secretRef:
+                name: <appName>-secret
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: <containerPort>
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: <containerPort>
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

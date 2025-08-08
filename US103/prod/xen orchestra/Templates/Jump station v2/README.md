@@ -129,6 +129,7 @@ Deploy keys:
 
 ```bash
 ssh-copy-id bssadm@10.0.0.202
+ssh-copy-id bssadm@10.0.2.3
 ssh-copy-id bssadm@10.0.2.20
 ssh-copy-id bssadm@10.0.2.21
 ssh-copy-id bssadm@10.0.2.22
