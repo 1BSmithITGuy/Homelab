@@ -4,7 +4,8 @@
 #  This is for user profile .bashrc shell customziations.  
 #  replace these files:  /etc/skel/.bashrc, and any exuisting user profiles .bashrc
 #  07/06/2025 - added kubectl aliases
-#  08/07/2025 - added orchestration aliases
+#  08/05/2025 - added orchestration aliases
+#  08/06/2025 - added kubectl context to ps1
 #  -----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -69,24 +70,24 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 #  kubectl aliases (BSS)
-alias k='kubectl'
-source /etc/bash_completion
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
+  alias k='kubectl'
+  source /etc/bash_completion
+  source <(kubectl completion bash)
+  complete -o default -F __start_kubectl k
 
-alias kgp='kubectl get pods'
-alias kc='kubectx'
-alias kn='kubens'
+  alias kgp='kubectl get pods'
+  alias kc='kubectx'
+  alias kn='kubens'
 
 #  git filesystem navigation shortcut aliases (BSS)
-alias bsdev='cd /srv/repos/Homelab/US103/dev/'
-alias bsprod='cd /srv/repos/Homelab/US103/prod/'
-alias bsdevorc='cd /srv/repos/Homelab/US103/dev/orchestration'
+  alias bsdev='cd /srv/repos/Homelab/US103/dev/'
+  alias bsprod='cd /srv/repos/Homelab/US103/prod/'
+  alias bsdevorc='cd /srv/repos/Homelab/US103/dev/orchestration'
 
 #  Orchestration aliases (BSS)
-alias bsk8start='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-start-k8s.sh'
-alias bsk8shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-k8s.sh'
-alias bs103shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-the-world.sh'           
+  alias bsk8start='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-start-k8s.sh'
+  alias bsk8shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-k8s.sh'
+  alias bs103shut='/srv/repos/Homelab/US103/prod/orchestration/bin/us103-shutdown-the-world.sh'
 
 # Bash completion
 if ! shopt -oq posix; then
@@ -96,3 +97,49 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+# >>> Kube context in Parrot prompt (minimal, cached, theme-safe) >>>
+# Fast kube context with colors (no \[ \] in output; real ESC only)
+KUBE_PS1_CACHE=""; KUBE_PS1_LASTMOD=0
+kube_ps1_fast() {
+  local kubeconfig_file="${KUBECONFIG:-$HOME/.kube/config}"
+  if [ ! -f "$kubeconfig_file" ]; then KUBE_PS1_CACHE=""; echo ""; return; fi
+
+  local current_mod; current_mod=$(stat -c %Y "$kubeconfig_file" 2>/dev/null)
+  if [ "$current_mod" != "$KUBE_PS1_LASTMOD" ] || [ -z "$KUBE_PS1_CACHE" ]; then
+    KUBE_PS1_CACHE=$(kubectl config current-context 2>/dev/null)
+    KUBE_PS1_LASTMOD="$current_mod"
+  fi
+
+  local esc=$'\e'
+  local reset="${esc}[0m"
+  local orange="${esc}[38;5;208m"
+  local yellow="${esc}[38;5;226m"
+  local italic="${esc}[3m"
+  local noitalic="${esc}[23m"
+
+  local color=""
+  case "$KUBE_PS1_CACHE" in
+    us103-k3s01)     color="$orange" ;;
+    us103-kubeadm01) color="$yellow" ;;
+  esac
+
+  [ -n "$KUBE_PS1_CACHE" ] && \
+    printf "%s{%s%s%s}%s" "$color" "$italic" "$KUBE_PS1_CACHE" "$noitalic" "$reset"
+}
+
+# Ensure there is no colon after \h in the [user@host] block
+PS1="$(printf '%s' "$PS1" | sed -E 's/(\\\[\\033\[01;96m\\\]\\h):/\1/')"
+
+# Insert :{context} right after \h (inside the first bracket), preserving colors
+PS1="$(printf '%s' "$PS1" | sed -E 's/(\\\[\\033\[01;96m\\\]\\h)/\1:$(kube_ps1_fast)/')"
+# <<< Kube context in Parrot prompt <<<
+
+# Error marker in prompt: show [✗] when last command failed (keeps Parrot style)
+ps1_err() {
+  [[ $? != 0 ]] && printf '[\[\033[0;31m\]✗\[\033[0;37m\]]\u2500'
+}
+corner=$'\u250C\u2500'   # ┌─
+PS1="${PS1/$corner/$corner\$(ps1_err)}"
+
