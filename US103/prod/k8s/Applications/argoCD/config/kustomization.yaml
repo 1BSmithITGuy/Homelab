@@ -1,0 +1,14 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+
+resources:
+  - install.yaml
+  - ingress.yaml
+
+commonLabels:
+  app: argocd
+
+patchesStrategicMerge:
+  - service-argocd-server-patch.yaml
