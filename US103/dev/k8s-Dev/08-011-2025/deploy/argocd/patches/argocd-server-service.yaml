@@ -4,11 +4,10 @@ metadata:
   name: argocd-server
   namespace: argocd
 spec:
+  # Keep ClusterIP, ingress will front it
   type: ClusterIP
   ports:
     - name: http
       port: 80
       targetPort: 8080
-    - name: https
-      port: 443
-      targetPort: 8080
+

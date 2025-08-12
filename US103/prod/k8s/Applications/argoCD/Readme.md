@@ -26,3 +26,11 @@ argocd login 10.0.2.20:32533
 
 #  when deploying from repo, ./ is the root
 ./Dev/argoCD/Demos/Solar System
+
+# To uninstall the above:
+kubectl delete -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl delete ns argocd --ignore-not-found
+
+kubectl get validatingwebhookconfigurations,mutatingwebhookconfigurations -o name | grep -i argocd | xargs -r kubectl delete
+

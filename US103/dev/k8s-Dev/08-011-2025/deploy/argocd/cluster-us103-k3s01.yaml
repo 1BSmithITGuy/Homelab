@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-us103-k3s01
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+data:
+  # "us103-k3s01"
+  name: dXMxMDMtazNzMDE=
+  # "https://10.0.0.202:6443"
+  server: aHR0cHM6Ly8xMC4wLjAuMjAyOjY0NDM=
+  # full kubeconfig-derived client cert/key + CA bundle as JSON (unchanged)
+  config: aVoyc3dhR05KZGtwcmRtZHpSMEpPYkRaelJpczNPVGR0SzBwTVRXMVVhMVJvY1ROdk1FbDNVVVJCVDBKblRsWklVVGhDUVdZNFJRcENRVTFEUVhGUmQwUjNXVVJXVWpCVVFWRklMMEpCVlhkQmQwVkNMM3BCWkVKblRsWklVVFJGUm1kUlZWUlpka2c1TjB3MU9ESkhUWEE1YlhoQlRVZFdDa3BaU0ZGd09WVjNRMmRaU1V0dldrbDZhakJGUVhkSlJGTlJRWGRTWjBsb1FVbEtRMVJyYTBwRlFuRlFURWh0WjNJekszbDNTbkoxUmpJMlZHSnpZVGNLVDB4c1RGSk5UbHAyY0hCU1FXbEZRVE00WTFOV00zRjZRV3hXYTNkVFVXTnhhR0phT1dG
+

@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: us103-demos
+namePrefix: us103-
+
+resources:
+  - ../../base
+  - namespace.yaml
+  - ingress.yaml
+
+labels:
+  - pairs:
+      site: US103
+    includeSelectors: true
+    includeTemplates: true
+
+commonAnnotations:
+  managed-by: kustomize
+  maintainer: bryan
+
+images:
+  - name: siddharth67/solar-system
+    newTag: v6

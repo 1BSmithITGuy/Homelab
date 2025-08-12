@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+
+# App-level labels that are true in every site
+commonLabels:
+  app.kubernetes.io/name: solar-system
+  app.kubernetes.io/part-of: demos
