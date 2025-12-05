@@ -1,0 +1,9 @@
+# mongoDB database endpoint
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+  #  The service name for this mongo deployment:
+  mongo-url: mongo-service

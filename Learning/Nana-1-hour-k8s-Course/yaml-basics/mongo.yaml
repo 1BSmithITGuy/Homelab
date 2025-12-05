@@ -1,0 +1,61 @@
+#  deployment and service together.  you can sperate but common to keep together.
+#  basic configuration for deployment and service for any application
+
+#  configuration of deployment
+apiVersion: apps/v1
+kind: Deployment
+  # main part of deployment is Blueprint for pods (template)
+
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongo  #  note required to specify in this section (the deployment), required for pod (spec section below)
+spec:  #deployment specs
+  replicas: 1
+  selector:
+    matchLabels:  #  reference another label
+      app: mongo  #  All apps that match this label belong to this deployment
+  template:
+  #  configuration of the pod that is within the deployment
+  #  has its own metadata and spec section
+    metadata:
+      labels:
+        app: mongo  #  required here, could use anything, like myValue: mykey. 
+    spec:                                                                                                                             
+      containers                                                                                                                                                                  :
+      - name: mongo
+        image: mongo:6.0
+        ports:
+        - containerPort: 27017
+  #  Env variables - get from container documentation, some usually required.
+        env: 
+        - name: MONGO_INITDB_ROOT_USERNAME
+        # value: We would use this if we didn't have a value defined in mongo-secret.yaml, keep secrets out of repo this way
+          valueFrom: #  use this to reference a secret defined elsewhere (here:  mongo-secret.yaml).
+            secretKeyRef: 
+              name: mongo-secret  # This is the metadata.name value in mongo-secret.yaml
+              key: mongo-user  #  this is the key under data that references the secret value
+        
+        #  Same concepts as above
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef: 
+              name: mongo-secret  
+              key: mongo-password  
+
+---  # yaml syntax, not specific to k8s, new section
+
+# service, can be a sperate file but often included in deployment
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongo  #  Slect the pods to forward the request to (see above deployment under specs.containers)
+  ports:
+    - protocol: TCP
+      #  Both port and target port can be different, but often just KISS.
+      port: 27017   #  port of the service
+      targetPort: 27017   #  port of the pods (specified in containerport above)

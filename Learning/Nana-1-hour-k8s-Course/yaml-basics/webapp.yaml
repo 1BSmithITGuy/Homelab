@@ -1,0 +1,73 @@
+#  Copied from mongo.yaml in same dir, then modified with nana's container image, port, etc.
+#  deployment and service together.  you can sperate but common to keep together.
+#  basic configuration for deployment and service for any application
+
+
+#  configuration of deployment
+apiVersion: apps/v1
+kind: Deployment
+  # main part of deployment is Blueprint for pods (template)
+
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp  #  note required to specify in this section (the deployment), required for pod (spec section below)
+spec:  #deployment specs
+  replicas: 1
+  selector:
+    matchLabels:  #  reference another label
+      app: webapp  #  All apps that match this label belong to this deployment
+  template:
+  #  configuration of the pod that is within the deployment
+  #  has its own metadata and spec section
+    metadata:
+      labels:
+        app: webapp  #  required here, could use anything, like myValue: mykey. 
+    spec:                                                                                                                             
+      containers                                                                                                                                                                  :
+      - name: webapp
+        image: nanajanashia/k8s-demo-app:v1.0
+        ports:
+        - containerPort: 3000
+        #  Env variables - get from container documentation, some usually required.
+        env: 
+        - name: USER_NAME # I believe this is what nana defined in her container.
+        # value: We would use this if we didn't have a value defined in mongo-secret.yaml, keep secrets out of repo this way
+          valueFrom: #  use this to reference a secret defined elsewhere (here:  mongo-secret.yaml).
+            secretKeyRef: 
+              name: mongo-secret  # This is the metadata.name value in mongo-secret.yaml
+              key: mongo-user  #  this is the key under data that references the secret value
+        
+        #  Same concepts as above
+        - name: USER_PWD
+          valueFrom: 
+            secretKeyRef: 
+              name: mongo-secret  
+              key: mongo-password
+        #  Need to reference DB fronm configmap
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config #  metatadata.name in mongo-config.yaml
+              key: mongo-url # mongo-config data key
+#  by using secrets and configmaps, if something changes you don't need to adjust any deployments
+
+---  # yaml syntax, not specific to k8s, new section
+
+# service, can be a sperate file but often included in deployment
+# this is very similar to the internal service in mongo.yaml, but this is for external access
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: NodePort
+  selector:
+    app: webapp  #  Slect the pods to forward the request to (see above deployment under specs.containers)
+  ports:
+    - protocol: TCP
+      #  Both port and target port can be different, but often just KISS.
+      port: 3000   #  port of the service
+      targetPort: 3000   #  port of the pods (specified in containerport above)
+      nodePort: 30100  #  This needs to be within the range of allowed nodeports, and, you really shouldn't use nodeport
