@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:                # ← LABELS ON THE DEPLOYMENT ITSELF
+    app: nginx           # ← DOES *NOT* need to match the Pod labels
+    winnie: poo          # ← ALSO DOES NOT need to match anything
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:         # ← THIS IS THE IMPORTANT MATCHING SECTION
+      app: nginx         # ← MUST MATCH THE POD TEMPLATE LABEL BELOW
+
+  template:              # ← BLUEPRINT FOR PODS THE DEPLOYMENT CREATES
+    metadata:
+      labels:
+        app: nginx       # ← MUST MATCH selector.matchLabels.app ABOVE
+                         # ← If this label changes, Deployment breaks
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.16
+          ports:
+            - containerPort: 8080 # in service, targetport points here
+
