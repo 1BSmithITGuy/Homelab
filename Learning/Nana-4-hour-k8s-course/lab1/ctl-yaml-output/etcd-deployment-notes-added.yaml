@@ -1,0 +1,120 @@
+# If you remember only five things, remember these:
+
+# 1.  status is reality
+#       Spec is desire. Status is truth. Debugging lives here.
+
+# 2.  generation vs observedGeneration
+#        If they don’t match, the controller hasn’t caught up or is stuck.
+
+# 3.  deployment.kubernetes.io/revision
+#        This is why kubectl rollout undo works.
+
+# 4.  last-applied-configuration
+#         Explains 90% of “kubectl apply did something weird”.
+
+# 5.  Defaulted rollout knobs (maxSurge, maxUnavailable, progressDeadlineSeconds)
+#         These silently control blast radius during deploys.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: default
+
+  # =======================
+  # ADDED BY KUBERNETES
+  # =======================
+
+  uid: 12345678-aaaa-bbbb-cccc-1234567890ab
+  # Unique immutable ID for this object instance.
+  # Changes if deleted + recreated.
+
+  resourceVersion: "987654"
+  # Internal etcd version.
+  # Used for watches and optimistic concurrency.
+
+  creationTimestamp: "2025-01-01T12:00:00Z"
+  # When the API server created this object.
+
+  generation: 1
+  # Increments every time spec changes - like if you update the deployment.
+  # Compared against status.observedGeneration.
+
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    # Rollout revision used for rollback/history.
+
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {...}
+    # Added by kubectl apply.
+    # Stores last applied spec to compute diffs.
+
+spec:
+  replicas: 2
+
+  # =======================
+  # DEFAULTED BY KUBERNETES
+  # =======================
+
+  revisionHistoryLimit: 10
+  # How many old ReplicaSets are kept for rollback.
+
+  progressDeadlineSeconds: 600
+  # Max time a rollout may stall before marked failed.
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+      # Controls rollout speed vs availability.
+
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.25
+
+        imagePullPolicy: IfNotPresent
+        # Default because tag is not 'latest'.
+
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        # Where container exit info is written.
+
+      restartPolicy: Always
+      # Always true for Deployments.
+
+      terminationGracePeriodSeconds: 30
+      # Default graceful shutdown window.
+
+# =====================================================
+# STATUS SECTION — NOT PART OF YOUR DEPLOYMENT SPEC
+# =====================================================
+# Entirely written by controllers
+
+status:
+  observedGeneration: 1
+  # Controller has processed spec.generation 1.
+
+  replicas: 2
+  updatedReplicas: 2
+  readyReplicas: 2
+  availableReplicas: 2
+  # Real, observed cluster state.
+
+  conditions:
+  - type: Available
+    status: "True"
+    reason: MinimumReplicasAvailable
+
+  - type: Progressing
+    status: "True"
+    reason: NewReplicaSetAvailable
