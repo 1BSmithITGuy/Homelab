@@ -45,7 +45,7 @@ spec:  #deployment specs
 
 ---  # yaml syntax, not specific to k8s, new section
 
-# service, can be a sperate file but often included in deployment
+# service, can be a seperate file but often included in deployment
 
 apiVersion: v1
 kind: Service

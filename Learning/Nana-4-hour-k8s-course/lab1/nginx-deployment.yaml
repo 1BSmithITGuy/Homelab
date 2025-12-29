@@ -10,12 +10,14 @@ spec:
 
   selector:
     matchLabels:         # ← THIS IS THE IMPORTANT MATCHING SECTION
-      app: nginx         # ← MUST MATCH THE POD TEMPLATE LABEL BELOW
+#  specifies which pods the deployment owns.  See below under template.metadata.labels
+      app: nginx         
 
   template:              # ← BLUEPRINT FOR PODS THE DEPLOYMENT CREATES
     metadata:
       labels:
-        app: nginx       # ← MUST MATCH selector.matchLabels.app ABOVE
+#  selector above looks for this.
+        app: nginx       
                          # ← If this label changes, Deployment breaks
 
     spec:

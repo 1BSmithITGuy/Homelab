@@ -3,7 +3,7 @@
 #  basic configuration for deployment and service for any application
 
 
-#  configuration of deployment
+#
 apiVersion: apps/v1
 kind: Deployment
   # main part of deployment is Blueprint for pods (template)
@@ -16,7 +16,7 @@ spec:  #deployment specs
   replicas: 1
   selector:
     matchLabels:  #  reference another label
-      app: webapp  #  All apps that match this label belong to this deployment
+      app: webapp  #  All apps/pods that match this label belong to this deployment?  Is this referencing the labels.app above? I am not sure I completely uderstand this?
   template:
   #  configuration of the pod that is within the deployment
   #  has its own metadata and spec section
@@ -31,7 +31,7 @@ spec:  #deployment specs
         - containerPort: 3000
         #  Env variables - get from container documentation, some usually required.
         env: 
-        - name: USER_NAME # I believe this is what nana defined in her container.
+        - name: USER_NAME # I believe this is what nana defined in her container?  So the container is loking for this?
         # value: We would use this if we didn't have a value defined in mongo-secret.yaml, keep secrets out of repo this way
           valueFrom: #  use this to reference a secret defined elsewhere (here:  mongo-secret.yaml).
             secretKeyRef: 
